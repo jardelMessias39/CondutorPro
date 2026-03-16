@@ -372,7 +372,7 @@ const registrarResultadoNoBanco = async (acertos: number, total: number) => {
             {!carregandoIA && (
             <div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
               <button 
-                onClick={avancarQuestao}
+                onClick={() => avancarQuestao()}
                 style={{ background: "var(--primary)", border: "none", padding: "10px 20px", borderRadius: "4px", fontWeight: "bold", cursor: "pointer", color: "#0D0E11" }}
               >
                 ENTENDI, PRÓXIMA →

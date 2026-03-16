@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useEffect, useState, useCallback } from 'react';
 import { supabase } from "@/lib/supabase"; // Importando sua instância do Supabase
 import { nomeDoNivel } from "@/lib/niveis";
 export default function RankingWidget() {

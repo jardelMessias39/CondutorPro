@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
-import { UserCheck, UserX, Trash2, Search, ShieldAlert, Loader2, XCircle, CheckCircle, Edit3, Logout, LogOut } from "lucide-react";
+import { UserCheck, UserX, Trash2, Search, ShieldAlert, Loader2, XCircle, CheckCircle, Edit3, LogOut } from "lucide-react";
 
 import BotaoRelatorio from "@/components/BotaoRelatorio";
 import RankingWidget from "@/components/Ranking/RankingWidget";

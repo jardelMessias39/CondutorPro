@@ -47,7 +47,7 @@ export default function DashboardPrincipal() {
           return;
         }
         // 2. Verificamos se ele é ADMIN (se for, já liga o botão especial)
-        if (data.role === 'admin') {
+       if ((data as any).role === 'admin') {
           setIsAdmin(true);
         }
 

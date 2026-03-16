@@ -8,7 +8,7 @@ import RankingWidget from "@/components/Ranking/RankingWidget";
 import { supabase } from "@/lib/supabase";
 
 
-const CATEGORY_CONFIG = {
+const CATEGORY_CONFIG: Record<string, any> = {
   "Todos": { icon: "⊞", color: "#C8A96E", bg: "rgba(200,169,110,0.15)" },
   "Acidentes": { icon: "⚠", color: "#E05C5C", bg: "rgba(224,92,92,0.15)" },
   "Legislação": { icon: "§", color: "#5C8FE0", bg: "rgba(92,143,224,0.15)" },
@@ -31,7 +31,7 @@ export default function AulasPage() {
     ? videos
     : videos.filter(v => v.categoria === selectedCategory);
 
-  const handleCategoryChange = (cat) => {
+  const handleCategoryChange = (cat: string) => {
     setSelectedCategory(cat);
     const newFiltered = cat === "Todos" ? videos : videos.filter(v => v.categoria === cat);
     if (newFiltered.length > 0) {
@@ -40,7 +40,7 @@ export default function AulasPage() {
     }
   };
 
-  const handleVideoSelect = (video) => {
+  const handleVideoSelect = (video: any) => {
     setPlayerReady(false);
     setActiveVideo(video);
   };
@@ -124,6 +124,7 @@ export default function AulasPage() {
 
   return () => clearInterval(interval);
 }, [playerReady, activeVideo.id]);
+
 
   const catColor = CATEGORY_CONFIG[activeVideo.categoria]?.color || "#C8A96E";
   // Esse código vai lá na tela onde o vídeo é exibido!
