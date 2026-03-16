@@ -1,0 +1,237 @@
+[
+  { "id": "R-1", "nome": "Parada obrigatória", "cat": "Regulamentação", "img": "/placas/img-reg/R-1.png" },
+    { "id": "R-1a", "nome": "Pare", "cat": "Regulamentação", "img": "/placas/img-reg/R-1a.png" },
+      { "id": "R-1b", "nome": "Parada Temporária", "cat": "Regulamentação", "img": "/placas/img-reg/R-1b.png" },
+  { "id": "R-2", "nome": "Dê a preferência", "cat": "Regulamentação", "img": "/placas/img-reg/R-2.png" },
+  { "id": "R-3", "nome": "Sentido proibido", "cat": "Regulamentação", "img": "/placas/img-reg/R-3.png" },
+  { "id": "R-4a", "nome": "Proibido virar à esquerda", "cat": "Regulamentação", "img": "/placas/img-reg/R-4a.png" },
+  { "id": "R-4b", "nome": "Proibido virar à direita", "cat": "Regulamentação", "img": "/placas/img-reg/R-4b.png" },
+  { "id": "R-5a", "nome": "Proibido retornar à esquerda", "cat": "Regulamentação", "img": "/placas/img-reg/R-5a.png" },
+  { "id": "R-5b", "nome": "Proibido retornar à direita", "cat": "Regulamentação", "img": "/placas/img-reg/R-5b.png" },
+  { "id": "R-6a", "nome": "Proibido estacionar", "cat": "Regulamentação", "img": "/placas/img-reg/R-6a.png" },
+  { "id": "R-6b", "nome": "Estacionamento regulamentado", "cat": "Regulamentação", "img": "/placas/img-reg/R-6b.png" },
+  { "id": "R-6c", "nome": "Proibido parar e estacionar", "cat": "Regulamentação", "img": "/placas/img-reg/R-6c.png" },
+  { "id": "R-7", "nome": "Proibido ultrapassar", "cat": "Regulamentação", "img": "/placas/img-reg/R-7.png" },
+  { "id": "R-8a", "nome": "Proibido mudar de faixa ou pista (esq p/ dir)", "cat": "Regulamentação", "img": "/placas/img-reg/R-8a.png" },
+  { "id": "R-8b", "nome": "Proibido mudar de faixa ou pista (dir p/ esq)", "cat": "Regulamentação", "img": "/placas/img-reg/R-8b.png" },
+  { "id": "R-9", "nome": "Proibido trânsito de caminhões", "cat": "Regulamentação", "img": "/placas/img-reg/R-9.png" },
+  { "id": "R-10", "nome": "Proibido trânsito de veículos automotores", "cat": "Regulamentação", "img": "/placas/img-reg/R-10.png" },
+  { "id": "R-11", "nome": "Proibido trânsito de veículos de tração animal", "cat": "Regulamentação", "img": "/placas/img-reg/R-11.png" },
+  { "id": "R-14", "nome": "Peso bruto total máximo permitido", "cat": "Regulamentação", "img": "/placas/img-reg/R-14.png" },
+  { "id": "R-19", "nome": "Velocidade máxima permitida", "cat": "Regulamentação", "img": "/placas/img-reg/R-19.png" },       
+  { "id": "R-20", "nome": "Proibido acionar buzina ou sinal sonoro", "cat": "Regulamentação", "img": "/placas/img-reg/R-20.png" },
+  { "id": "R-22", "nome": "Uso obrigatório de corrente", "cat": "Regulamentação", "img": "/placas/img-reg/R-22.png" },
+  { "id": "R-23", "nome": "Conserve-se à direita", "cat": "Regulamentação", "img": "/placas/img-reg/R-23.png" },
+  { "id": "R-24a", "nome": "Sentido de circulação da via/pista", "cat": "Regulamentação", "img": "/placas/img-reg/R-24a.png" },
+  { "id": "R-24b", "nome": "Passagem obrigatória", "cat": "Regulamentação", "img": "/placas/img-reg/R-24b.png" },
+  { "id": "R-25a", "nome": "Vire à esquerda", "cat": "Regulamentação", "img": "/placas/img-reg/R-25a.png" },
+  { "id": "R-25b", "nome": "Vire à direita", "cat": "Regulamentação", "img": "/placas/img-reg/R-25b.png" },
+  { "id": "R-25c", "nome": "Siga em frente ou à esquerda", "cat": "Regulamentação", "img": "/placas/img-reg/R-25c.png" },
+  { "id": "R-25d", "nome": "Siga em frente ou à direita", "cat": "Regulamentação", "img": "/placas/img-reg/R-25d.png" },
+  { "id": "R-26", "nome": "Siga em frente", "cat": "Regulamentação", "img": "/placas/img-reg/R-26.png" },
+  { "id": "R-26a", "nome": "Ciclovia", "cat": "Regulamentação", "img": "/placas/img-reg/R-26a.png" },
+  { "id": "R-27", "nome": "Veículos de grande porte mantenham-se à direita", "cat": "Regulamentação", "img": "/placas/img-reg/R-27.png" },
+  { "id": "R-28", "nome": "Mão dupla adiante", "cat": "Regulamentação", "img": "/placas/img-reg/R-28.png" },
+  { "id": "R-29", "nome": "Proibido trânsito de pedestres", "cat": "Regulamentação", "img": "/placas/img-reg/R-29.png" },
+  { "id": "R-33", "nome": "Sentido de circulação na rotatória", "cat": "Regulamentação", "img": "/placas/img-reg/R-33.png" },
+  { "id": "R-36a", "nome": "Ciclistas à esquerda, pedestres à direita", "cat": "Regulamentação", "img": "/placas/img-reg/R-36a.png" },
+  { "id": "R-38", "nome": "Proibido trânsito de ônibus", "cat": "Regulamentação", "img": "/placas/img-reg/R-38a.png" },
+   { "id": "R-38a", "nome": "Contra mão", "cat": "Regulamentação", "img": "/placas/img-reg/R-38.png" },
+  { "id": "A-1a", "nome": "Curva acentuada à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-1a.png" },
+  { "id": "A-1b", "nome": "Curva acentuada à direita", "cat": "Advertência", "img": "/placas/img-adv/A-1b.png" },
+  { "id": "A-2a", "nome": "Curva à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-2a.png" },
+  { "id": "A-2b", "nome": "Curva à direita", "cat": "Advertência", "img": "/placas/img-adv/A-2b.png" },
+  { "id": "A-3a", "nome": "Pista sinuosa à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-3a.png" },
+  { "id": "A-3b", "nome": "Pista sinuosa à direita", "cat": "Advertência", "img": "/placas/img-adv/A-3b.png" },
+  { "id": "A-4a", "nome": "Curva acentuada em S à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-4a.png" },
+  { "id": "A-4b", "nome": "Curva acentuada em S à direita", "cat": "Advertência", "img": "/placas/img-adv/A-4b.png" },
+  { "id": "A-5a", "nome": "Curva em S à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-5a.png" },
+  { "id": "A-5b", "nome": "Curva em S à direita", "cat": "Advertência", "img": "/placas/img-adv/A-5b.png" },
+  { "id": "A-6", "nome": "Cruzamento de vias", "cat": "Advertência", "img": "/placas/img-adv/A-6.png" },
+  { "id": "A-7a", "nome": "Via lateral à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-7a.png" },
+  { "id": "A-7b", "nome": "Via lateral à direita", "cat": "Advertência", "img": "/placas/img-adv/A-7b.png" },
+  { "id": "A-8", "nome": "Interseção em T", "cat": "Advertência", "img": "/placas/img-adv/A-8.png" },
+  { "id": "A-9", "nome": "Bifurcação em Y", "cat": "Advertência", "img": "/placas/img-adv/A-9.png" },
+  { "id": "A-10a", "nome": "Entroncamento oblíquo à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-10a.png" },
+  { "id": "A-10b", "nome": "Entroncamento oblíquo à direita", "cat": "Advertência", "img": "/placas/img-adv/A-10b.png" },
+  { "id": "A-11a", "nome": "Junções sucessivas contrárias primeira à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-11a.png" },
+  { "id": "A-11b", "nome": "Junções sucessivas contrárias primeira à direita", "cat": "Advertência", "img": "/placas/img-adv/A-11b.png" },
+  { "id": "A-12", "nome": "Interseção em círculo", "cat": "Advertência", "img": "/placas/img-adv/A-12.png" },
+  { "id": "A-13a", "nome": "Confluência à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-13a.png" },
+  { "id": "A-13b", "nome": "Confluência à direita", "cat": "Advertência", "img": "/placas/img-adv/A-13b.png" },
+  { "id": "A-14", "nome": "Semáforo à frente", "cat": "Advertência", "img": "/placas/img-adv/A-14.png" },
+  { "id": "A-15", "nome": "Parada obrigatória à frente", "cat": "Advertência", "img": "/placas/img-adv/A-15.png" },
+  { "id": "A-16", "nome": "Bonde / VLT", "cat": "Advertência", "img": "/placas/img-adv/A-16.png" },
+  { "id": "A-17", "nome": "Pista irregular", "cat": "Advertência", "img": "/placas/img-adv/A-17.png" },
+  { "id": "A-18", "nome": "Saliência ou lombada", "cat": "Advertência", "img": "/placas/img-adv/A-18.png" },
+  { "id": "A-19", "nome": "Depressão", "cat": "Advertência", "img": "/placas/img-adv/A-19.png" },
+  { "id": "A-20a", "nome": "Declive acentuado", "cat": "Advertência", "img": "/placas/img-adv/A-20a.png" },
+  { "id": "A-20b", "nome": "Aclive acentuado", "cat": "Advertência", "img": "/placas/img-adv/A-20b.png" },
+  { "id": "A-21a", "nome": "Estreitamento de pista ao centro", "cat": "Advertência", "img": "/placas/img-adv/A-21a.png" },
+  { "id": "A-21b", "nome": "Estreitamento de pista à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-21b.png" },
+  { "id": "A-21c", "nome": "Estreitamento de pista à direita", "cat": "Advertência", "img": "/placas/img-adv/A-21c.png" },
+  { "id": "A-21d", "nome": "Alargamento de pista à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-21d.png" },
+  { "id": "A-21e", "nome": "Alargamento de pista à direita", "cat": "Advertência", "img": "/placas/img-adv/A-21e.png" },
+  { "id": "A-22", "nome": "Ponte estreita", "cat": "Advertência", "img": "/placas/img-adv/A-22.png" },
+  { "id": "A-23", "nome": "Ponte móvel", "cat": "Advertência", "img": "/placas/img-adv/A-23.png" },
+  { "id": "A-24", "nome": "Obras", "cat": "Advertência", "img": "/placas/img-adv/A-24.png" },
+  { "id": "A-25", "nome": "Mão dupla adiante", "cat": "Advertência", "img": "/placas/img-adv/A-25.png" },
+  { "id": "A-26a", "nome": "Sentido único", "cat": "Advertência", "img": "/placas/img-adv/A-26a.png" },
+  { "id": "A-26b", "nome": "Sentido duplo", "cat": "Advertência", "img": "/placas/img-adv/A-26b.png" },
+  { "id": "A-27", "nome": "Área com desmoronamento", "cat": "Advertência", "img": "/placas/img-adv/A-27.png" },
+  { "id": "A-28", "nome": "Pista escorregadia", "cat": "Advertência", "img": "/placas/img-adv/A-28.png" },
+  { "id": "A-29", "nome": "Projeção de cascalho", "cat": "Advertência", "img": "/placas/img-adv/A-29.png" },
+  { "id": "A-30a", "nome": "Trânsito de ciclistas", "cat": "Advertência", "img": "/placas/img-adv/A-30a.png" },
+  { "id": "A-30b", "nome": "Passagem sinalizada de ciclistas", "cat": "Advertência", "img": "/placas/img-adv/A-30b.png" },
+  { "id": "A-30c", "nome": "Trânsito compartilhado", "cat": "Advertência", "img": "/placas/img-adv/A-30c.png" },
+  { "id": "A-31", "nome": "Trânsito de tratores", "cat": "Advertência", "img": "/placas/img-adv/A-31.png" },
+  { "id": "A-32a", "nome": "Trânsito de pedestres", "cat": "Advertência", "img": "/placas/img-adv/A-32a.png" },
+  { "id": "A-32b", "nome": "Passagem sinalizada de pedestres", "cat": "Advertência", "img": "/placas/img-adv/A-32b.png" },
+  { "id": "A-33a", "nome": "Área escolar", "cat": "Advertência", "img": "/placas/img-adv/A-33a.png" },
+  { "id": "A-33b", "nome": "Passagem sinalizada de escolares", "cat": "Advertência", "img": "/placas/img-adv/A-33b.png" },
+  { "id": "A-34", "nome": "Crianças", "cat": "Advertência", "img": "/placas/img-adv/A-34.png" },
+  { "id": "A-35", "nome": "Animais", "cat": "Advertência", "img": "/placas/img-adv/A-35.png" },
+  { "id": "A-36", "nome": "Animais selvagens", "cat": "Advertência", "img": "/placas/img-adv/A-36.png" },
+  { "id": "A-37", "nome": "Altura limitada", "cat": "Advertência", "img": "/placas/img-adv/A-37.png" },
+  { "id": "A-38", "nome": "Largura limitada", "cat": "Advertência", "img": "/placas/img-adv/A-38.png" },
+  { "id": "A-39", "nome": "Passagem de nível sem barreira", "cat": "Advertência", "img": "/placas/img-adv/A-39.png" },
+  { "id": "A-40", "nome": "Passagem de nível com barreira", "cat": "Advertência", "img": "/placas/img-adv/A-40.png" },
+  { "id": "A-41", "nome": "Cruz de Santo André", "cat": "Advertência", "img": "/placas/img-adv/A-41.png" },
+  { "id": "A-42a", "nome": "Início de pista dupla", "cat": "Advertência", "img": "/placas/img-adv/A-42a.png" },
+  { "id": "A-42b", "nome": "Fim de pista dupla", "cat": "Advertência", "img": "/placas/img-adv/A-42b.png" },
+  { "id": "A-42c", "nome": "Pista dividida", "cat": "Advertência", "img": "/placas/img-adv/A-42c.png" },
+  { "id": "A-43", "nome": "Aeroporto", "cat": "Advertência", "img": "/placas/img-adv/A-43.png" },
+  { "id": "A-44", "nome": "Vento lateral", "cat": "Advertência", "img": "/placas/img-adv/A-44.png" },
+  { "id": "A-45", "nome": "Rua sem saída", "cat": "Advertência", "img": "/placas/img-adv/A-45.png" },
+  { "id": "A-46", "nome": "Peso bruto total limitado", "cat": "Advertência", "img": "/placas/img-adv/A-46.png" },
+  { "id": "A-47", "nome": "Peso limitado por eixo", "cat": "Advertência", "img": "/placas/img-adv/A-47.png" },
+  { "id": "A-48", "nome": "Comprimento limitado", "cat": "Advertência", "img": "/placas/img-adv/A-48.png" },
+  { "id": "A-49a", "nome": "Pedestres à esquerda, VLT à direita", "cat": "Advertência", "img": "/placas/img-adv/A-49a.png" },
+  { "id": "A-49b", "nome": "Pedestres à direita, VLT à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-49b.png" },
+  { "id": "A-50a", "nome": "Veículos à esquerda, VLT à direita", "cat": "Advertência", "img": "/placas/img-adv/A-50a.png" },
+  { "id": "A-50b", "nome": "Veículos à direita, VLT à esquerda", "cat": "Advertência", "img": "/placas/img-adv/A-50b.png" },
+  {
+    "id": "S-1",
+    "nome": "Área de Estacionamento",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-1.png"
+  },
+  {
+    "id": "S-2",
+    "nome": "Serviço de Telefones",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-2.png"
+  },
+  {
+    "id": "S-3",
+    "nome": "Posto de Mecânico",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-3.png"      
+  },
+  {
+    "id": "S-4",
+    "nome": "Posto de Abastecimento",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-4.png"
+  },
+  {
+    "id": "S-5",
+    "nome": "Pronto Socorro",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-5.png"
+  },
+  {
+    "id": "S-6",
+    "nome": "Terminal Rodoviário",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-6.png"
+  },
+  {
+    "id": "S-7",
+    "nome": "Restaurante",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-7.png"
+  },
+  {
+    "id": "S-8",
+    "nome": "Hotel",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-8.png"
+  },
+  {
+    "id": "S-9",
+    "nome": "Borracharia",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-9.png"
+  },
+  {
+    "id": "S-10",
+    "nome": "Área de Campismo",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-10.png"
+  },
+
+  {
+    "id": "S-11",
+    "nome": "Posto de Gasolina",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-11.png"
+  },
+  {
+    "id": "S-12",
+    "nome": "Transporte sobre as Águas",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-12.png"
+  },
+  {
+    "id": "S-13",
+    "nome": "Areaporto",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-13.png"
+  },
+  {
+    "id": "S-14",
+    "nome": "Ponto de Parada",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-14.png"
+  },
+  {
+    "id": "S-15",
+    "nome": "Informação Turística",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-15.png"
+  },
+  {
+    "id": "S-16",
+    "nome": "Pedágio",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-16.png"
+  },
+   {
+    "id": "S-17",
+    "nome": "Terminal Ferróviario",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-17.png"
+  },
+  {
+    "id": "S-18",
+    "nome": "Estacionamento Para Deficientes",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-18.png"
+  },
+  {
+    "id": "S-19",
+    "nome": "Praia",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-19.png"
+  },
+    {
+    "id": "S-20",
+    "nome": "Pratrimonio Cultural",
+    "cat": "Indicação",
+    "img": "/placas/img-ind/S-20.png"
+  }
+  
+]
+
+

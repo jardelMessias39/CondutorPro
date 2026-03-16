@@ -1,0 +1,1076 @@
+[
+{
+"pergunta": "De acordo com o CTB, deixar o condutor ou passageiro de usar o cinto de segurança é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Dirigir sob a influência de álcool ou substância psicoativa que determine dependência é infração:",
+"opcoes": ["Média", "Grave", "Gravíssima", "Leve"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Avançar o sinal vermelho do semáforo é infração:",
+"opcoes": ["Grave", "Média", "Gravíssima", "Leve"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar em velocidade superior à máxima permitida em mais de 50% é infração:",
+"opcoes": ["Grave", "Gravíssima", "Média", "Leve"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Conduzir veículo sem possuir CNH é infração:",
+"opcoes": ["Grave", "Média", "Gravíssima", "Leve"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Estacionar em vaga reservada à pessoa com deficiência sem credencial é infração:",
+"opcoes": ["Grave", "Gravíssima", "Média", "Leve"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de prestar socorro à vítima de acidente quando solicitado pela autoridade é infração:",
+"opcoes": ["Grave", "Gravíssima", "Média", "Leve"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Ultrapassar pelo acostamento é infração:",
+"opcoes": ["Gravíssima", "Grave", "Média", "Leve"],
+"correta": 0,
+"categoria": "Legislação"
+},
+{
+"pergunta": "A validade da CNH para condutores com menos de 50 anos é de:",
+"opcoes": ["3 anos", "5 anos", "10 anos", "2 anos"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "O limite máximo de pontos para suspensão do direito de dirigir, quando não houver infração gravíssima, é:",
+"opcoes": ["20 pontos", "30 pontos", "40 pontos", "50 pontos"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "A conversão à direita com sinal vermelho é permitida quando:",
+"opcoes": ["Nunca é permitida", "Houver sinalização permitindo", "O trânsito estiver livre", "For via rural"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Usar o celular segurando-o durante a condução é infração:",
+"opcoes": ["Média", "Grave", "Gravíssima", "Leve"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de dar preferência ao pedestre na faixa é infração:",
+"opcoes": ["Grave", "Gravíssima", "Média", "Leve"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transportar criança sem observar as normas de segurança é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Dirigir veículo com CNH vencida há mais de 30 dias é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Na direção defensiva, manter distância segura do veículo à frente serve para:",
+"opcoes": ["Economizar combustível", "Evitar colisões traseiras", "Aumentar a velocidade média", "Reduzir o tempo de viagem"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em caso de chuva intensa, o condutor deve:",
+"opcoes": ["Aumentar a velocidade", "Reduzir a velocidade e aumentar a distância", "Frear bruscamente", "Desligar os faróis"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A aquaplanagem ocorre quando:",
+"opcoes": ["O motor falha", "Os freios travam", "Os pneus perdem contato com o solo devido à água", "O veículo derrapa em pista seca"],
+"correta": 2,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em curvas acentuadas, o ideal é:",
+"opcoes": ["Frear bruscamente durante a curva", "Acelerar ao máximo", "Reduzir a velocidade antes da curva", "Desligar o motor"],
+"correta": 2,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "O tempo de reação do condutor é influenciado por:",
+"opcoes": ["Cansaço e uso de álcool", "Cor do veículo", "Modelo do carro", "Tipo de combustível"],
+"correta": 0,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em situação de ofuscamento por farol alto, o condutor deve:",
+"opcoes": ["Olhar diretamente para a luz", "Fechar os olhos por segundos", "Desviar o olhar para a direita da via", "Acelerar para ultrapassar"],
+"correta": 2,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "O uso do cinto de segurança é exemplo de:",
+"opcoes": ["Segurança ativa", "Segurança passiva", "Item opcional", "Equipamento estético"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Ao dirigir à noite, recomenda-se:",
+"opcoes": ["Usar apenas luz de posição", "Manter faróis regulados e limpos", "Dirigir sem iluminação", "Usar farol alto constantemente"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Antes de iniciar viagem longa, o condutor deve:",
+"opcoes": ["Ignorar condições do veículo", "Verificar itens básicos de segurança", "Dirigir sem pausas", "Aumentar pressão além do recomendado"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A direção preventiva envolve:",
+"opcoes": ["Competição com outros motoristas", "Previsão e cautela", "Uso excessivo da buzina", "Alta velocidade constante"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em pista escorregadia, o condutor deve:",
+"opcoes": ["Frear bruscamente", "Aumentar velocidade", "Reduzir velocidade gradualmente", "Virar volante rapidamente"],
+"correta": 2,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "O uso correto dos espelhos retrovisores permite:",
+"opcoes": ["Eliminar pontos cegos totalmente", "Ampliar a visão do entorno", "Evitar uso de seta", "Substituir atenção direta"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "O comportamento seguro no trânsito exige:",
+"opcoes": ["Impulsividade", "Agressividade", "Responsabilidade", "Competição"],
+"correta": 2,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em caso de neblina intensa, deve-se:",
+"opcoes": ["Usar farol alto", "Usar farol baixo", "Desligar faróis", "Parar no meio da via"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Dirigir com atenção plena significa:",
+"opcoes": ["Usar celular com cuidado", "Observar apenas frente", "Antecipar riscos", "Dirigir apenas devagar"],
+"correta": 2,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Ao presenciar acidente, a primeira atitude é:",
+"opcoes": ["Remover vítima imediatamente", "Garantir segurança do local", "Oferecer água", "Seguir viagem"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Em caso de hemorragia externa, deve-se:",
+"opcoes": ["Aplicar pressão direta", "Lavar com água quente", "Movimentar ferimento", "Nada fazer"],
+"correta": 0,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Em suspeita de fratura, deve-se:",
+"opcoes": ["Alinhar o osso", "Imobilizar o local", "Massagear área", "Movimentar vítima"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Se a vítima estiver inconsciente, deve-se:",
+"opcoes": ["Sacudir fortemente", "Oferecer líquido", "Verificar respiração", "Colocar sentada"],
+"correta": 2,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "O número do SAMU é:",
+"opcoes": ["190", "191", "192", "193"],
+"correta": 2,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Em caso de parada cardiorrespiratória, deve-se:",
+"opcoes": ["Aguardar socorro sem agir", "Iniciar compressões torácicas", "Oferecer água", "Levantar vítima"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Queimaduras devem ser tratadas inicialmente com:",
+"opcoes": ["Gelo diretamente", "Água corrente fria", "Pomada qualquer", "Óleo de cozinha"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "O superaquecimento do motor pode ser causado por:",
+"opcoes": ["Falta de combustível", "Baixo nível de líquido de arrefecimento", "Excesso de ar nos pneus", "Uso do cinto"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A função do óleo do motor é:",
+"opcoes": ["Lubrificar peças internas", "Resfriar pneus", "Limpar combustível", "Iluminar painel"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Pneus desgastados podem causar:",
+"opcoes": ["Maior aderência", "Redução consumo", "Risco de derrapagem", "Melhor frenagem"],
+"correta": 2,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A bateria do veículo é responsável por:",
+"opcoes": ["Abastecer tanque", "Fornecer energia elétrica", "Refrigerar motor", "Controlar direção"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Freios em mau estado resultam em:",
+"opcoes": ["Menor distância parada", "Falha na frenagem", "Economia combustível", "Maior estabilidade"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A calibragem correta dos pneus contribui para:",
+"opcoes": ["Maior desgaste", "Segurança e economia", "Menor estabilidade", "Aumento ruído"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O sistema de arrefecimento serve para:",
+"opcoes": ["Lubrificar motor", "Resfriar motor", "Aumentar potência", "Iluminar painel"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O alinhamento e balanceamento evitam:",
+"opcoes": ["Desgaste irregular dos pneus", "Consumo elétrico", "Superaquecimento", "Falta combustível"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A embreagem tem função de:",
+"opcoes": ["Frear veículo", "Conectar e desconectar motor da transmissão", "Resfriar motor", "Iluminar faróis"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O filtro de ar do motor deve ser mantido limpo para:",
+"opcoes": ["Evitar consumo de combustível", "Garantir mistura adequada ar-combustível", "Aumentar peso do veículo", "Reduzir visibilidade"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O painel indicando luz de óleo acesa significa:",
+"opcoes": ["Combustível baixo", "Problema na lubrificação", "Farol queimado", "Porta aberta"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+    "pergunta": "Qual a carga horária mínima de aulas teóricas para a categoria B?",
+    "opcoes": ["30 horas", "45 horas", "20 horas", "25 horas"],
+    "correta": 1,
+    "categoria": "Legislação"
+  },
+  {
+    "pergunta": "O que fazer em caso de aquaplanagem?",
+    "opcoes": ["Frear bruscamente", "Virar o volante rápido", "Tirar o pé do acelerador e manter a direção reta", "Acelerar para passar logo"],
+    "correta": 2,
+    "categoria": "Direção Defensiva"
+  },
+  {
+    "pergunta": "A placa R-1 indica o quê?",
+    "opcoes": ["Siga em frente", "Dê a preferência", "Parada Obrigatória", "Proibido estacionar"],
+    "correta": 2,
+    "categoria": "Sinalização"
+  },
+{
+"pergunta": "Segundo o CTB, deixar de sinalizar a via e remover o veículo da pista após acidente sem vítima é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Conduzir motocicleta sem usar capacete de segurança é infração:",
+"opcoes": ["Média", "Grave", "Gravíssima", "Leve"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de acender os faróis à noite é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar com veículo sem placas de identificação é infração:",
+"opcoes": ["Grave", "Gravíssima", "Média", "Leve"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Dirigir ameaçando pedestres que estejam atravessando a via pública é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Conduzir veículo com equipamento obrigatório ineficiente ou inoperante é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar em marcha à ré, salvo pequenas manobras, é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Atirar do veículo ou abandonar na via objetos ou substâncias é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de atualizar o endereço no prazo legal junto ao órgão de trânsito é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Usar buzina de forma prolongada e sucessiva a qualquer pretexto é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 0,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Ao perceber comportamento agressivo de outro condutor, a atitude defensiva correta é:",
+"opcoes": ["Retribuir agressão", "Aumentar velocidade", "Manter calma e distância", "Fechar o veículo"],
+"correta": 2,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A técnica dos dois segundos é utilizada para:",
+"opcoes": ["Calcular consumo", "Medir distância segura", "Controlar velocidade máxima", "Reduzir marcha"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em declives acentuados, deve-se:",
+"opcoes": ["Descer em ponto morto", "Usar freio motor", "Desligar motor", "Acelerar continuamente"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "O uso da seta ao mudar de faixa serve para:",
+"opcoes": ["Evitar multas apenas", "Advertir e comunicar intenção", "Iluminar via", "Substituir retrovisor"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em cruzamentos não sinalizados, deve-se:",
+"opcoes": ["Acelerar para passar primeiro", "Dar preferência à direita", "Ignorar outros veículos", "Parar sempre"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A fadiga ao volante pode causar:",
+"opcoes": ["Aumento reflexos", "Redução atenção", "Maior concentração", "Melhor desempenho"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em pista com buracos, o condutor deve:",
+"opcoes": ["Frear bruscamente sobre buraco", "Segurar firme o volante e reduzir velocidade", "Soltar volante", "Acelerar"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Dirigir sob forte vento lateral exige:",
+"opcoes": ["Aumentar velocidade", "Segurar firme o volante", "Soltar direção", "Frear bruscamente"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A verificação constante dos retrovisores ajuda a:",
+"opcoes": ["Eliminar pontos cegos totalmente", "Antecipar manobras", "Evitar uso seta", "Reduzir combustível"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Ao ser ultrapassado, o condutor deve:",
+"opcoes": ["Aumentar velocidade", "Facilitar ultrapassagem", "Fechar passagem", "Buzinar continuamente"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em caso de choque elétrico na vítima, deve-se:",
+"opcoes": ["Tocar imediatamente", "Desligar fonte elétrica antes", "Oferecer água", "Levantar vítima"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Em caso de objeto encravado no corpo da vítima, deve-se:",
+"opcoes": ["Remover imediatamente", "Manter objeto no local e estabilizar", "Empurrar para dentro", "Ignorar"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Se houver suspeita de lesão na coluna, deve-se:",
+"opcoes": ["Sentar vítima", "Movimentar normalmente", "Evitar movimentar", "Levantar rapidamente"],
+"correta": 2,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Em caso de convulsão, deve-se:",
+"opcoes": ["Segurar fortemente", "Proteger cabeça e afastar objetos", "Oferecer água", "Colocar objeto na boca"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "O número do Corpo de Bombeiros é:",
+"opcoes": ["190", "191", "192", "193"],
+"correta": 3,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "O sistema de freios ABS tem função de:",
+"opcoes": ["Aumentar consumo", "Evitar travamento das rodas", "Reduzir potência", "Controlar combustível"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A troca periódica do fluido de freio é importante para:",
+"opcoes": ["Evitar ferrugem externa", "Garantir eficiência da frenagem", "Aumentar velocidade", "Melhorar som"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Velas de ignição desgastadas podem causar:",
+"opcoes": ["Melhor desempenho", "Falhas no motor", "Economia combustível", "Redução ruído"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O alternador tem função de:",
+"opcoes": ["Refrigerar motor", "Gerar energia elétrica com motor ligado", "Frear veículo", "Lubrificar peças"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Amortecedores desgastados podem causar:",
+"opcoes": ["Maior estabilidade", "Perda de estabilidade", "Redução consumo", "Melhor frenagem"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A correia dentada é responsável por:",
+"opcoes": ["Sincronizar motor", "Frear veículo", "Resfriar radiador", "Carregar bateria"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O excesso de carga no veículo pode causar:",
+"opcoes": ["Maior estabilidade", "Desgaste prematuro de componentes", "Economia combustível", "Redução consumo óleo"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Filtro de combustível sujo pode causar:",
+"opcoes": ["Melhor queima", "Falhas na aceleração", "Mais potência", "Menor consumo"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Sistema de direção desalinhado provoca:",
+"opcoes": ["Desgaste irregular pneus", "Melhor estabilidade", "Economia combustível", "Maior aderência"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O uso do triângulo de sinalização é obrigatório em distância mínima de:",
+"opcoes": ["10 metros", "20 metros", "30 metros", "40 metros"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "É proibido estacionar:",
+"opcoes": ["A 3 metros da esquina", "A 5 metros da esquina", "A 8 metros da esquina", "A 10 metros da esquina"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "O uso de luz baixa durante o dia em rodovias é:",
+"opcoes": ["Facultativo", "Proibido", "Obrigatório conforme condições previstas em lei", "Permitido apenas à noite"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Dirigir sem atenção ou sem os cuidados indispensáveis à segurança é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar com farol desregulado ofuscando outros condutores é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de reduzir velocidade ao se aproximar de escola é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Estacionar sobre faixa de pedestres é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Parar sobre ciclovia é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de usar o cinto de segurança pelo passageiro no banco traseiro é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Segundo o CTB, conduzir veículo utilizando calçado que não se firme nos pés é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar com o veículo em mau estado de conservação, comprometendo a segurança, é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Fazer retorno em local proibido pela sinalização é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar o condutor de portar a CNH quando obrigatória é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 0,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Dirigir veículo com validade da CNH vencida há menos de 30 dias:",
+"opcoes": ["É permitido sem restrição", "É infração leve", "É infração média", "É infração grave"],
+"correta": 0,
+"categoria": "Legislação"
+},
+{
+"pergunta": "O condutor envolvido em acidente com vítima deve:",
+"opcoes": ["Remover o veículo imediatamente", "Prestar socorro e adotar providências legais", "Evitar contato com autoridades", "Deixar o local rapidamente"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar com lotação excedente em veículo de passageiros é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de dar passagem pela esquerda quando solicitado é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Realizar transporte remunerado de pessoas sem autorização é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar em ciclovia ou ciclofaixa é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Ao aproximar-se de veículo de transporte escolar parado para embarque, o condutor deve:",
+"opcoes": ["Acelerar para ultrapassar", "Reduzir velocidade e redobrar atenção", "Buzinar continuamente", "Ignorar a situação"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em congestionamento, a atitude correta é:",
+"opcoes": ["Usar acostamento", "Manter calma e evitar mudanças bruscas", "Ultrapassar pelo canteiro", "Pressionar veículo da frente"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "O uso do freio motor é recomendado para:",
+"opcoes": ["Subidas leves", "Descidas prolongadas", "Aumentar velocidade", "Substituir freio de estacionamento"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A sinalização antecipada de manobras contribui para:",
+"opcoes": ["Confundir outros condutores", "Evitar acidentes", "Aumentar consumo", "Reduzir visibilidade"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Dirigir sob efeito de sono compromete principalmente:",
+"opcoes": ["Estética do veículo", "Tempo de reação", "Consumo combustível", "Potência do motor"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em pista de terra, deve-se:",
+"opcoes": ["Frear bruscamente", "Reduzir velocidade e evitar movimentos bruscos", "Acelerar forte", "Desligar faróis"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A verificação dos pneus antes da viagem ajuda a prevenir:",
+"opcoes": ["Pane elétrica", "Estouro e perda de controle", "Falha no rádio", "Superaquecimento do painel"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Ao dirigir sob chuva leve, deve-se:",
+"opcoes": ["Ignorar condições", "Reduzir gradualmente a velocidade", "Aumentar velocidade", "Frear forte em curvas"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A manutenção preventiva reduz:",
+"opcoes": ["Segurança", "Riscos de falhas mecânicas", "Vida útil do veículo", "Estabilidade"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A observação constante da sinalização permite:",
+"opcoes": ["Evitar cumprimento da lei", "Antecipar decisões seguras", "Ignorar pedestres", "Aumentar velocidade"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em caso de parada respiratória, deve-se acionar imediatamente:",
+"opcoes": ["190", "192", "193", "199"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Ao atender vítima consciente, deve-se:",
+"opcoes": ["Ignorar relato", "Ouvir e acalmar", "Gritar com vítima", "Movimentar rapidamente"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Em caso de sangramento nasal, deve-se:",
+"opcoes": ["Inclinar cabeça para trás", "Inclinar levemente para frente", "Deitar vítima", "Oferecer água quente"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "No atendimento inicial, deve-se evitar:",
+"opcoes": ["Manter calma", "Aglomeração no local", "Sinalizar via", "Chamar socorro"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Em caso de queimadura química, deve-se:",
+"opcoes": ["Aplicar pomada", "Lavar com água corrente abundante", "Cobrir com óleo", "Ignorar"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "O nível de óleo deve ser verificado com:",
+"opcoes": ["Motor quente", "Motor desligado e frio", "Veículo em movimento", "Motor acelerado"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Radiador com vazamento pode causar:",
+"opcoes": ["Superaquecimento", "Melhor desempenho", "Economia combustível", "Mais potência"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Luzes de freio queimadas comprometem:",
+"opcoes": ["Estética", "Comunicação com outros condutores", "Consumo combustível", "Arrefecimento"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A troca periódica do filtro de óleo contribui para:",
+"opcoes": ["Melhor lubrificação", "Menor segurança", "Maior desgaste", "Falha elétrica"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Suspensão desgastada pode provocar:",
+"opcoes": ["Perda de estabilidade", "Maior aderência", "Economia combustível", "Redução consumo óleo"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Falta de alinhamento pode causar:",
+"opcoes": ["Desgaste irregular dos pneus", "Melhor dirigibilidade", "Economia combustível", "Redução consumo óleo"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A embreagem desgastada pode causar:",
+"opcoes": ["Patinação do veículo", "Maior potência", "Economia combustível", "Melhor frenagem"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O excesso de pressão nos pneus pode resultar em:",
+"opcoes": ["Desgaste central da banda", "Maior aderência", "Melhor conforto", "Redução consumo"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O sistema de escapamento defeituoso pode causar:",
+"opcoes": ["Poluição excessiva", "Economia combustível", "Maior potência", "Redução ruído"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A falta de combustível pode causar:",
+"opcoes": ["Pane seca", "Melhor desempenho", "Redução desgaste", "Maior potência"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Dirigir veículo com placas ilegíveis é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Conduzir veículo com descarga livre ou silenciador defeituoso é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de manter acesa a luz baixa em túneis é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Parar o veículo sobre a pista de rolamento das rodovias é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de usar farol baixo durante a noite em vias iluminadas é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar com veículo produzindo fumaça excessiva é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Conduzir motocicleta transportando passageiro sem capacete é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Dirigir veículo com equipamento obrigatório ausente é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de sinalizar obstáculo na via é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Realizar ultrapassagem em faixa contínua é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Recusar-se a realizar teste, exame clínico ou perícia para verificar influência de álcool é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Promover competição não autorizada em via pública é infração:",
+"opcoes": ["Grave", "Gravíssima", "Média", "Leve"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Forçar passagem entre veículos que transitam em sentidos opostos é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Executar operação de retorno passando por cima de calçada é infração:",
+"opcoes": ["Grave", "Gravíssima", "Média", "Leve"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Dirigir veículo segurando ou manuseando telefone celular é infração:",
+"opcoes": ["Média", "Grave", "Gravíssima", "Leve"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar com o veículo derramando carga sobre a via é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de manter distância lateral de 1,5m ao ultrapassar ciclista é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Estacionar afastado da guia da calçada a mais de 50 cm é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Parar na área de cruzamento prejudicando circulação é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de usar luz indicadora de direção ao mudar de faixa é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "A melhor forma de evitar colisão frontal é:",
+"opcoes": ["Ultrapassar em qualquer local", "Manter-se na faixa correta e respeitar sinalização", "Dirigir no acostamento", "Aumentar velocidade em curvas"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Ao perceber risco de colisão traseira, o condutor deve:",
+"opcoes": ["Frear bruscamente", "Sinalizar e tentar sair da trajetória", "Ignorar retrovisor", "Desligar veículo"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em local com grande circulação de pedestres, deve-se:",
+"opcoes": ["Acelerar para liberar via", "Reduzir velocidade e redobrar atenção", "Buzinar continuamente", "Ignorar faixa"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "A condução econômica e segura depende de:",
+"opcoes": ["Arrancadas bruscas", "Antecipação e suavidade nos comandos", "Alta rotação constante", "Frenagens tardias"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "O respeito aos limites de velocidade contribui para:",
+"opcoes": ["Maior risco", "Redução de acidentes", "Aumento de multas", "Menor atenção"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em caso de pneu estourado em movimento, deve-se:",
+"opcoes": ["Frear bruscamente", "Segurar firme o volante e reduzir gradualmente", "Virar volante rapidamente", "Acelerar"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Dirigir sob chuva com faróis apagados pode causar:",
+"opcoes": ["Melhor visibilidade", "Redução da visibilidade para outros", "Economia de bateria", "Menor risco"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "O planejamento da rota antes da viagem ajuda a:",
+"opcoes": ["Reduzir atenção", "Evitar decisões bruscas", "Aumentar consumo", "Ignorar sinalização"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Ao dirigir em estrada desconhecida, deve-se:",
+"opcoes": ["Aumentar velocidade", "Redobrar atenção à sinalização", "Ignorar placas", "Ultrapassar sempre"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "O uso correto do freio evita:",
+"opcoes": ["Desgaste natural", "Perda de controle do veículo", "Consumo de combustível", "Uso do cinto"],
+"correta": 1,
+"categoria": "Direção Defensiva"
+},
+{
+"pergunta": "Em caso de desmaio da vítima, deve-se:",
+"opcoes": ["Oferecer bebida alcoólica", "Deitá-la e elevar levemente as pernas", "Sacudir fortemente", "Ignorar situação"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Ao atender vítima com suspeita de traumatismo craniano, deve-se:",
+"opcoes": ["Movimentar cabeça", "Manter cabeça estável", "Levantar rapidamente", "Oferecer água"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Em caso de parada cardíaca, a compressão deve ser feita:",
+"opcoes": ["Somente uma vez", "De forma contínua até socorro chegar", "Por 5 segundos", "Sem ritmo definido"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Ao sinalizar local de acidente, deve-se:",
+"opcoes": ["Ignorar outros veículos", "Utilizar triângulo e pisca-alerta", "Apagar faróis", "Parar no meio da via"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "Em caso de vítima presa às ferragens, deve-se:",
+"opcoes": ["Retirar à força", "Aguardar resgate especializado", "Movimentar membros", "Oferecer comida"],
+"correta": 1,
+"categoria": "Primeiros Socorros"
+},
+{
+"pergunta": "A falta de manutenção do sistema de freios pode causar:",
+"opcoes": ["Melhor desempenho", "Aumento da distância de parada", "Redução risco", "Economia combustível"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "A troca regular do óleo evita:",
+"opcoes": ["Desgaste excessivo do motor", "Consumo combustível", "Uso do cinto", "Pane elétrica"],
+"correta": 0,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O filtro de ar obstruído pode causar:",
+"opcoes": ["Melhor combustão", "Perda de potência", "Maior economia", "Redução ruído"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Faróis desalinhados podem provocar:",
+"opcoes": ["Melhor visibilidade", "Ofuscamento de outros condutores", "Economia bateria", "Redução risco"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "O desgaste excessivo da pastilha de freio causa:",
+"opcoes": ["Frenagem eficiente", "Ruído e perda de eficiência", "Economia combustível", "Aumento potência"],
+"correta": 1,
+"categoria": "Mecânica Básica"
+},
+{
+"pergunta": "Dirigir veículo sem estar licenciado é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Estacionar em local sinalizado com placa de proibido estacionar é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Parar em fila dupla é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar em velocidade inferior à metade da máxima permitida, sem motivo, é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de dar preferência a veículo de emergência com sirene ligada é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Estacionar em ponto de ônibus é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Parar sobre ponte ou viaduto é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Deixar de reduzir velocidade ao se aproximar de hospital é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 2,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Dirigir com apenas uma das mãos, sem justificativa legal, é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 1,
+"categoria": "Legislação"
+},
+{
+"pergunta": "Transitar com veículo sem equipamento obrigatório de segurança infantil, quando exigido, é infração:",
+"opcoes": ["Leve", "Média", "Grave", "Gravíssima"],
+"correta": 3,
+"categoria": "Legislação"
+}
+]

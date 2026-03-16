@@ -1,0 +1,22 @@
+
+# 🏁 Condutor Pro - Treinamento Premium para Habilitação
+
+O **Condutor Pro** é uma plataforma de e-learning de alta performance desenvolvida para auxiliar alunos de autoescolas a dominarem a prova teórica do DETRAN. O sistema combina uma interface luxuosa com ferramentas práticas de aprendizado.
+
+## 🚀 Funcionalidades Principais
+- **Dashboard Inteligente:** Acompanhamento em tempo real do progresso nos módulos.
+- **Sistema de Temas (Dual Theme):** Alternância entre modo "Luxo" (Black & Gold) e modo "Clean" (Blue & White).
+- **Simulado Oficial:** Cronômetro integrado e banco de 30 questões simulando a prova real.
+- **Quizzes de Fixação:** Feedback instantâneo para reforço de conteúdo.
+- **Histórico Analítico:** Gráficos dinâmicos de desempenho por matéria.
+- **Painel Administrativo:** Gestão de conteúdo e métricas.
+
+## 🛠️ Tecnologias Utilizadas
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Linguagem:** TypeScript
+- **Estilização:** CSS Variables (Design System Dinâmico) + Inline Styles para performance.
+- **Ícones:** Lucide React
+- **Gerenciamento de Estado:** React Hooks (useState, useEffect, useMemo)
+
+## 🎨 Design System
+O projeto utiliza um sistema de variáveis globais que permite a troca completa de identidade visual sem recarregar a página, garantindo acessibilidade e conforto visual.

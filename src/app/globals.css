@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* TEMA ESCURO (Preto e Dourado) - O padrão que você já gosta */
+[data-theme='dark'], :root:not([data-theme='light']) {
+  --background: #0D0E11;
+  --foreground: #F0E8D8;
+  --primary: #C8A96E;
+  --primary-hover: #b3965d;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(200, 169, 110, 0.2);
 }
 
+/* TEMA CLARO (Branco e Azul) - O novo visual "Clean" */
+[data-theme='light'] {
+  --background: #FFFFFF;
+  --foreground: #1A1B1F;
+  --primary: #0056b3; 
+  --primary-hover: #004494;
+  --card-bg: #f8f9fa;
+  --border: #dee2e6;
+}
+
+/* O resto do seu código (@theme inline, body, etc) continua igual abaixo */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  /* ... */
+}
+/* --- RESPONSIVIDADE (O QUE ESTAVA FALTANDO) --- */
+
+/* 1. Ajuste do Grid de Placas para Celular e PC */
+.grid-placas {
+  display: grid !important;
+  /* No celular (pequeno): 2 colunas. No PC: aumenta conforme o espaço */
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+  gap: 15px !important;
+  padding: 15px !important;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 2. Ajuste dos Filtros (Botões) para não estourarem a tela */
+.container-filtros {
+  display: flex !important;
+  flex-wrap: wrap !important; /* Faz os botões pularem linha no celular */
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 10px !important;
+  margin-bottom: 20px;
+}
+
+/* 3. Media Query para ajustes finos em Telas Pequenas (Celulares) */
+@media (max-width: 768px) {
+  .grid-placas {
+    grid-template-columns: repeat(2, 1fr) !important; /* Força 2 colunas no celular */
+    gap: 10px !important;
+    padding: 10px !important;
+  }
+
+  h1 {
+    font-size: 1.5rem !important; /* Título menor para caber no celular */
+  }
+
+  /* Deixa as imagens das placas um pouco menores para caberem lado a lado */
+  .card-placa img {
+    width: 100px !important;
+    height: 100px !important;
   }
 }
+/* Ajuste para o Menu Superior */
+.nav-principal {
+  display: flex !important;
+  flex-wrap: wrap !important; /* Permite que os itens quebrem linha se necessário */
+  justify-content: space-between !important;
+  align-items: center;
+  padding: 10px 20px !important;
+  width: 100%;
+}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 768px) {
+  /* Alinha o bloco do usuário e o botão sair no centro */
+  .nav-principal div {
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  
+  /* Esconde o texto "Dashboard" se ficar muito apertado ou diminui a fonte */
+  .logo-texto {
+    font-size: 16px !important;
+  }
+}
+header, nav {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  display: flex !important;
+  flex-wrap: wrap !important; /* ISSO faz os botões pularem linha se não couberem */
+  justify-content: center !important; 
+  gap: 10px !important;
+  padding: 10px !important;
+}
+
+/* 2. Ajuste específico para os links (Biblioteca, Simulador, etc.) */
+header a, nav a, header span, nav span {
+  font-size: 13px !important; /* Diminui um pouco a letra no geral */
+  white-space: nowrap; /* Impede que uma palavra sozinha quebre ao meio */
+}
+
+/* 3. Regra de Ouro para Celulares Pequenos */
+@media (max-width: 480px) {
+  /* Se o nome "CONDUTOR PRO" for muito grande, a gente diminui ele */
+  header h1, .logo-texto, b {
+    font-size: 14px !important;
+    letter-spacing: 1px !important;
+  }
+
+  /* Faz os itens do menu ficarem um ao lado do outro, mas menores */
+  nav div, header div {
+    justify-content: center !important;
+    gap: 8px !important;
+  }
 }
