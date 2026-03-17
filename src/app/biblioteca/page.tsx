@@ -12,13 +12,39 @@ export default function Biblioteca() {
   const [busca, setBusca] = useState("");
   const [categoriaAtiva, setCategoriaAtiva] = useState("Todas");
 
-  const documentos = [
-    { titulo: "Código de Trânsito Brasileiro (CTB)", categoria: "Legislação", link: "http://www.planalto.gov.br/ccivil_03/leis/l9503.htm" },
-    { titulo: "Resoluções do CONTRAN", categoria: "Legislação", link: "#" },
-    { titulo: "Manual de Primeiros Socorros", categoria: "Saúde", link: "#" },
-    { titulo: "Mecânica Básica de Veículos", categoria: "Mecânica", link: "#" },
-    { titulo: "Manutenção Preventiva e Corretiva", categoria: "Mecânica", link: "#" },
-  ];
+
+  const MANUAIS_OFICIAIS = [
+  {
+    titulo: "Código de Trânsito Brasileiro (CTB)",
+    orgao: "Planalto / Governo Federal",
+    link: "https://www.planalto.gov.br/ccivil_03/leis/l9503.htm",
+    cor: "#0047AB",
+    icon: "⚖️"
+  },
+  {
+    titulo: "Manual de Primeiros Socorros",
+    orgao: "Diretriz Oficial",
+    // Link alternativo mais estável do Ministério da Saúde/Infraestrutura
+    link: "https://www.gov.br/transportes/pt-br/assuntos/transito/senatran/publicacoes/copy_of_manual_primeiros_socorros.pdf",
+    cor: "#E05C5C",
+    icon: "🚑"
+  },
+  {
+    titulo: "Direção Defensiva",
+    orgao: "SENATRAN",
+    link: "https://www.gov.br/transportes/pt-br/assuntos/transito/senatran/publicacoes/copy_of_manual_direcao_defensiva.pdf",
+    cor: "#5C8FE0",
+    icon: "🛡️"
+  },
+  {
+    titulo: "Manual de Sinalização",
+    orgao: "CONTRAN",
+    link: "https://www.gov.br/transportes/pt-br/assuntos/transito/senatran/manuais-de-sinalizacao-de-transito",
+    cor: "#008751",
+    icon: "🛑"
+  }
+];
+  
 
   const placas = placasData;
 
@@ -30,7 +56,7 @@ export default function Biblioteca() {
   }, [busca]);
 
   // FILTRO DE PLACAS
-  
+
   const placasFiltradas = useMemo(() => {
     return placas.filter(p =>
       (categoriaAtiva === "Todas" || p.cat === categoriaAtiva) &&
@@ -41,17 +67,18 @@ export default function Biblioteca() {
   const categorias = ["Todas", "Regulamentação", "Advertência", "Indicação"];
 
   return (
-    
+
     <div style={{ minHeight: "100vh", background: "var(--background)", color: "var(--foreground)" }}>
 
       <CourseHeader activePage="Biblioteca" />
       <RankingWidget />
 
-    <main style={{ width: "100%", maxWidth: "1100px", margin: "0 auto", padding: "20px" }}>
-      <Header 
-        nomeEscola="Autoescola Liderança" 
-        slogan="Sua CNH começa aqui" 
-      />
+
+      <main style={{ width: "100%", maxWidth: "1100px", margin: "0 auto", padding: "20px" }}>
+        <Header
+          nomeEscola="Autoescola Liderança"
+          slogan="Sua CNH começa aqui"
+        />
         {/* EXPLICAÇÃO */}
         <div style={{
           background: "rgba(200,169,110,0.1)",
@@ -65,10 +92,10 @@ export default function Biblioteca() {
           <Info color="#C8A96E" size={40} />
 
           <p style={{ fontSize: "14px", lineHeight: "1.5" }}>
-            <strong>Como funciona a Biblioteca:</strong> 
+            <strong>Como funciona a Biblioteca:</strong>
             Aqui você encontra todo o material de apoio para sua formação.
             Use a barra de busca para filtrar placas por nome ou documentos por título.
-            </p>
+          </p>
         </div>
 
         {/* BUSCA */}
@@ -113,6 +140,7 @@ export default function Biblioteca() {
               Catálogo de Sinalização
             </h2>
 
+
             <div className="container-filtros" style={{ display: "flex", gap: "8px" }}>
               {categorias.map(cat => (
                 <button
@@ -133,56 +161,102 @@ export default function Biblioteca() {
             </div>
 
           </div>
-          
+
 
           <div className="grid-placas" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "20px" }}>
-  {placasFiltradas.map(placa => (
-    <div key={placa.id} style={{ 
-      background: "rgba(255,255,255,0.03)", 
-      padding: "20px", 
-      borderRadius: "12px", 
-      border: "1px solid rgba(255,255,255,0.05)", 
-      textAlign: "center" 
-    }}>
-      
-      <Image
-        src={placa.img}
-        alt={placa.nome}
-        width={120}
-        height={120}
-        style={{
-          objectFit: "contain",
-          borderRadius: "8px",
-          marginBottom: "15px",
-          background: "#fff"
-        }}
-      />
+            {placasFiltradas.map(placa => (
+              <div key={placa.id} style={{
+                background: "rgba(255,255,255,0.03)",
+                padding: "20px",
+                borderRadius: "12px",
+                border: "1px solid rgba(255,255,255,0.05)",
+                textAlign: "center"
+              }}>
 
-      <strong style={{
-        display: "block",
-        fontSize: "13px",
-        marginBottom: "5px",
-       color: "var(--foreground)",
-        minHeight: "32px"
-      }}>
-        {placa.nome}
-      </strong>
+                <Image
+                  src={placa.img}
+                  alt={placa.nome}
+                  width={120}
+                  height={120}
+                  style={{
+                    objectFit: "contain",
+                    borderRadius: "8px",
+                    marginBottom: "15px",
+                    background: "#fff"
+                  }}
+                />
 
-      <span style={{
-        fontSize: "11px",
-        opacity: 0.6,
-       color: "var(--primary)",
-        fontWeight: "bold"
-      }}>
-        {placa.id}
-      </span>
+                <strong style={{
+                  display: "block",
+                  fontSize: "13px",
+                  marginBottom: "5px",
+                  color: "var(--foreground)",
+                  minHeight: "32px"
+                }}>
+                  {placa.nome}
+                </strong>
 
-    </div>
-  ))}
-</div>
+                <span style={{
+                  fontSize: "11px",
+                  opacity: 0.6,
+                  color: "var(--primary)",
+                  fontWeight: "bold"
+                }}>
+                  {placa.id}
+                </span>
+
+              </div>
+
+
+            ))}
+
+          </div>
 
         </section>
 
+        <div style={{ padding: '20px' }}>
+          <h3 style={{ color: 'var(--primary)', marginBottom: '15px' }}>Biblioteca de Manuais Oficiais</h3>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gap: '15px'
+          }}>
+            {MANUAIS_OFICIAIS.map((manual, index) => (
+              <a
+                key={index}
+                href={manual.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  textDecoration: 'none',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: `1px solid ${manual.cor}`,
+                  borderRadius: '12px',
+                  padding: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '15px',
+                  transition: 'transform 0.2s',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              >
+                <div style={{
+                  fontSize: '30px',
+                  background: manual.cor,
+                  padding: '10px',
+                  borderRadius: '10px'
+                }}>
+                  {manual.icon}
+                </div>
+                <div>
+                  <h4 style={{ margin: 0, color: '#FFF', fontSize: '14px' }}>{manual.titulo}</h4>
+                  <p style={{ margin: 0, color: '#888', fontSize: '12px' }}>{manual.orgao}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </main>
 
     </div>

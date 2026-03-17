@@ -30,7 +30,7 @@ export default function RootLayout({
         <NotificationIA />
         {/* BOTÃO DO WHATSAPP DIRETO NO LAYOUT PARA EVITAR ERRO DE IMPORTAÇÃO */}
         <a 
-          href="https://wa.me/5579999999999" // Substitua pelo número da autoescola
+          href="https://wa.me/5579998061093" // Substitua pelo número da autoescola
           target="_blank"
           rel="noopener noreferrer"
           style={{

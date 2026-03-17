@@ -55,57 +55,104 @@ export default function RankingWidget() {
       
 
 
-      {/* BOTÃO FLUTUANTE */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        style={{
-          position: "fixed", bottom: "110px", right: "30px",
-          width: "60px", height: "60px", borderRadius: "50%",
-          background: "var(--primary)", border: "none", cursor: "pointer",
-          fontSize: "24px", boxShadow: "0 4px 15px rgba(0,0,0,0.5)", zIndex: 9999,
+     {/* BOTÃO FLUTUANTE */}
+<button
+  onClick={() => setIsOpen(!isOpen)}
+  style={{
+    position: "fixed", 
+    bottom: "110px", 
+    right: "20px", // Reduzi um pouco para não ficar tão longe da borda no celular
+    width: "60px", 
+    height: "60px", 
+    borderRadius: "50%",
+    background: "var(--primary)", 
+    border: "none", 
+    cursor: "pointer",
+    fontSize: "24px", 
+    boxShadow: "0 4px 15px rgba(0,0,0,0.5)", 
+    zIndex: 9999,
+  }}
+>
+  🏆
+</button>
+
+{/* JANELA DO RANKING */}
+{isOpen && (
+  <div style={{
+    position: "fixed", 
+    bottom: "180px", 
+    right: "20px", 
+    width: "calc(100% - 40px)", // Ocupa quase a largura toda no celular
+    maxWidth: "320px", // Mas não passa de 320px no PC
+    background: "#121212", // COR SÓLIDA: Resolve a transparência que você viu no print
+    borderRadius: "15px", 
+    border: "2px solid var(--primary)", // Borda mais grossa para destacar
+    boxShadow: "0 10px 50px rgba(0,0,0,0.9)", // Sombra mais forte
+    zIndex: 10000, // Maior que o botão
+    padding: "20px",
+    maxHeight: "60vh", // Não deixa o ranking sumir para fora da tela
+    overflowY: "auto", // Adiciona scroll se tiver muitos alunos
+  }}>
+    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px", alignItems: "center" }}>
+      <h4 style={{ color: "var(--primary)", margin: 0, fontWeight: "bold", fontSize: "16px" }}>
+        RANKING DE ELITE
+      </h4>
+      <button 
+        onClick={() => setIsOpen(false)} 
+        style={{ 
+          background: "rgba(255,255,255,0.1)", 
+          border: "none", 
+          color: "#FFF", 
+          cursor: "pointer",
+          width: "25px",
+          height: "25px",
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
         }}
       >
-        🏆
+        ✕
       </button>
+    </div>
 
-      {/* JANELA DO RANKING */}
-      {isOpen && (
-        <div style={{
-          position: "fixed", bottom: "180px", right: "30px", width: "320px",
-          background: "var(--card-bg)", borderRadius: "15px", border: "1px solid var(--primary)",
-          boxShadow: "0 10px 40px rgba(0,0,0,0.8)", zIndex: 9999, padding: "20px",
-        }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
-            <h4 style={{ color: "var(--primary)", margin: 0, fontWeight: "bold" }}>RANKING DE ELITE</h4>
-            <button onClick={() => setIsOpen(false)} style={{ background: "transparent", border: "none", color: "var(--foreground)", cursor: "pointer" }}>✕</button>
+    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+      {loading ? (
+        <p style={{ textAlign: "center", fontSize: "12px", color: "#ccc" }}>Carregando competidores...</p>
+      ) : (
+        listaAlunos.map((aluno, index) => (
+          <div key={index} style={{
+            display: "flex", 
+            alignItems: "center", 
+            justifyContent: "space-between",
+            padding: "12px", 
+            borderRadius: "10px",
+            background: aluno.isMe ? "rgba(200, 169, 110, 0.25)" : "rgba(255,255,255,0.08)",
+            border: aluno.isMe ? "1px solid var(--primary)" : "1px solid rgba(255,255,255,0.1)"
+          }}>
+            <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+              <span style={{ 
+                fontWeight: "bold", 
+                color: index < 3 ? "#FFD700" : "var(--primary)", // Ouro para os top 3
+                fontSize: "14px"
+              }}>
+                {index + 1}º
+              </span>
+              <div>
+                <p style={{ margin: 0, fontSize: "14px", fontWeight: "bold", color: "#FFFFFF" }}>
+                  {aluno.nome} {aluno.isMe ? "⭐" : ""}
+                </p>
+              </div>
+            </div>
+            <span style={{ fontSize: "13px", fontWeight: "bold", color: "var(--primary)" }}>
+              {aluno.xp} XP
+            </span>
           </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            {loading ? (
-              <p style={{ textAlign: "center", fontSize: "12px" }}>Carregando competidores...</p>
-            ) : (
-              listaAlunos.map((aluno, index) => (
-                <div key={index} style={{
-                  display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "10px", borderRadius: "8px",
-                  background: aluno.isMe ? "rgba(200, 169, 110, 0.2)" : "rgba(255,255,255,0.05)",
-                  border: aluno.isMe ? "1px solid var(--primary)" : "none"
-                }}>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <span style={{ fontWeight: "bold", color: "var(--primary)" }}>{index + 1}º</span>
-                    <div>
-                      <p style={{ margin: 0, fontSize: "13px", fontWeight: "bold", color: "var(--foreground)" }}>
-                        {aluno.nome} {aluno.isMe ? "(Você)" : ""}
-                      </p>
-                    </div>
-                  </div>
-                  <span style={{ fontSize: "12px", fontWeight: "bold", color: "var(--primary)" }}>{aluno.xp} XP</span>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
+        ))
       )}
+    </div>
+  </div>
+)}
     </>
   );
 }
