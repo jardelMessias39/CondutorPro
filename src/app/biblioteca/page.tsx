@@ -25,32 +25,55 @@ export default function Biblioteca() {
     titulo: "Manual de Primeiros Socorros",
     orgao: "Diretriz Oficial",
     // Link alternativo mais estável do Ministério da Saúde/Infraestrutura
-    link: "https://www.gov.br/transportes/pt-br/assuntos/transito/senatran/publicacoes/copy_of_manual_primeiros_socorros.pdf",
+    link: "/manuais/Primeiros socorros.pdf",
     cor: "#E05C5C",
     icon: "🚑"
   },
   {
     titulo: "Direção Defensiva",
     orgao: "SENATRAN",
-    link: "https://www.gov.br/transportes/pt-br/assuntos/transito/senatran/publicacoes/copy_of_manual_direcao_defensiva.pdf",
+    link: "/manuais/direcaodefensiva.pdf",
     cor: "#5C8FE0",
     icon: "🛡️"
   },
   {
     titulo: "Manual de Sinalização",
     orgao: "CONTRAN",
-    link: "https://www.gov.br/transportes/pt-br/assuntos/transito/senatran/manuais-de-sinalizacao-de-transito",
+    link: "/manuais/Regulamentacao_F.pdf",
     cor: "#008751",
     icon: "🛑"
+  },
+  {
+    titulo: "Sinalização Horizontal",
+    orgao: "CONTRAN",
+    link: "/manuais/Sinalizacao_Horizontal.pdf", // Atenção: se o arquivo tiver S maiúsculo, aqui tem que ter também!
+    cor: "#008751",
+    icon: "🛑"
+  },
+  {
+    titulo: "Mecânica Básica",
+    orgao: "Acesso Offline Garantido",
+    link: "/manuais/mecanica.pdf",
+    cor: "#C8A96E",
+    icon: "🔧"
+  },
+  {
+    titulo: "Sinalização Cicloviária",
+    orgao: "CONTRAN",
+    link: "/manuais/Sinalizacao_Cicloviaria.pdf",
+    cor: "#10B981",
+    icon: "🚲"
   }
+
 ];
   
 
   const placas = placasData;
 
-  // FILTRO DE DOCUMENTOS
+// FILTRO DE DOCUMENTOS ATUALIZADO
   const documentosFiltrados = useMemo(() => {
-    return documentos.filter(doc =>
+    // Trocamos 'documentos' por 'MANUAIS_OFICIAIS'
+    return MANUAIS_OFICIAIS.filter(doc =>
       doc.titulo.toLowerCase().includes(busca.toLowerCase())
     );
   }, [busca]);
