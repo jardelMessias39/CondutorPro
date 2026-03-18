@@ -56,7 +56,7 @@ export default function LoginPage() {
 
 const recuperarSenha = async () => {
   if (!email) {
-    avisarIA("Digite seu email primeiro");
+    alert("Digite seu email primeiro");
     return;
   }
 
@@ -65,9 +65,9 @@ const recuperarSenha = async () => {
   });
 
   if (error) {
-    avisarIA("Erro ao enviar email.");
+    alert("Erro ao enviar email.");
   } else {
-    avisarIA("Enviamos um link para redefinir sua senha.");
+    alert("Enviamos um link para redefinir sua senha.");
   }
 };
 
