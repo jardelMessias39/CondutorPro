@@ -62,7 +62,7 @@
   { "id": "A-14", "nome": "Semáforo à frente", "cat": "Advertência", "img": "/placas/img-adv/A-14.png" },
   { "id": "A-15", "nome": "Parada obrigatória à frente", "cat": "Advertência", "img": "/placas/img-adv/A-15.png" },
   { "id": "A-16", "nome": "Bonde / VLT", "cat": "Advertência", "img": "/placas/img-adv/A-16.png" },
-  { "id": "A-17", "nome": "Pista irregular", "cat": "Advertência", "img": "/placas/img-adv/a-17.png" },
+  { "id": "A-17", "nome": "Pista irregular", "cat": "Advertência", "img": "/placas/img-adv/A-17.png" },
   { "id": "A-18", "nome": "Saliência ou lombada", "cat": "Advertência", "img": "/placas/img-adv/A-18.png" },
   { "id": "A-19", "nome": "Depressão", "cat": "Advertência", "img": "/placas/img-adv/A-19.png" },
   { "id": "A-20a", "nome": "Declive acentuado", "cat": "Advertência", "img": "/placas/img-adv/A-20a.png" },

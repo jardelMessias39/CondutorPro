@@ -8,6 +8,22 @@ interface Aluno {
   email: string;
   status: string;
 }
+const calcularIdade = (dataString: string) => {
+  if (!dataString) return "";
+
+  const hoje = new Date();
+  const [ano, mes, dia] = dataString.split("-").map(Number);
+
+  let idade = hoje.getFullYear() - ano;
+  const mesAtual = hoje.getMonth() + 1;
+  const diaAtual = hoje.getDate();
+
+  if (mesAtual < mes || (mesAtual === mes && diaAtual < dia)) {
+    idade--;
+  }
+
+  return idade;
+};
 
 export default function BotaoRelatorio({ alunos }: { alunos: Aluno[] }) {
   const exportarCSV = () => {
@@ -17,11 +33,11 @@ export default function BotaoRelatorio({ alunos }: { alunos: Aluno[] }) {
     }
 
     // Cabeçalho do Excel (CSV)
-    const cabecalho = "Nome;CPF;Email;Status\n";
+   const cabecalho = "Nome;CPF;Email;Status;Idade\n";
     
     // Transforma a lista de alunos em linhas de texto
-    const linhas = alunos.map(aluno => 
-  `${aluno.nome.toUpperCase()};${aluno.cpf};${aluno.email};${aluno.status.toUpperCase()}`
+const linhas = alunos.map(aluno => 
+  `${aluno.nome.toUpperCase()};${aluno.cpf};${aluno.email};${aluno.status.toUpperCase()};${calcularIdade(aluno.data_nascimento)}`
 ).join("\n");
 
     const corpoDoArquivo = cabecalho + linhas;

@@ -55,155 +55,149 @@ export default function ProgressoDetalhado() {
   // Se ainda não montou no cliente, retorna um fundo vazio para evitar erro visual
   if (!mounted) return <div style={{ background: "#0D0E11", minHeight: "100vh" }} />;
 
-  return (
-    <div style={{
-      minHeight: "100vh",
-      background: "var(--background)",
-      color: "var(--foreground)", // Garante texto escuro no claro e claro no escuro
-      fontFamily: "serif",
-      transition: "all 0.3s ease"
-    }}>
-      <CourseHeader activePage="Progresso" />
-      <RankingWidget />
+ return (
+  <div style={{
+    minHeight: "100vh",
+    background: "var(--background)",
+    color: "var(--foreground)",
+    fontFamily: "serif",
+    transition: "all 0.3s ease"
+  }}>
+    <CourseHeader activePage="Progresso" />
+    <RankingWidget />
 
-      <main style={{ maxWidth: "1000px", margin: "60px auto", padding: "0 20px" }}>
+    <main style={{ maxWidth: "1000px", margin: "60px auto", padding: "0 20px" }}>
 
-        <div style={{ textAlign: "center", marginBottom: "60px" }}>
-          <p style={{ color: "var(--primary)", fontSize: "12px", letterSpacing: "3px", textTransform: "uppercase", fontWeight: "bold" }}>
-            Análise de Desempenho
-          </p>
-          <h1 style={{ fontSize: "36px", fontWeight: "normal", marginTop: "10px", color: "var(--foreground)" }}>
-            Seu Histórico de Estudo
-          </h1>
-          <p style={{ textAlign: "center", fontStyle: "italic", opacity: 0.8 }}>
+      <div style={{ textAlign: "center", marginBottom: "60px" }}>
+        <p style={{ color: "var(--primary)", fontSize: "12px", letterSpacing: "3px", textTransform: "uppercase", fontWeight: "bold" }}>
+          Análise de Desempenho
+        </p>
+        <h1 style={{ fontSize: "36px", fontWeight: "normal", marginTop: "10px", color: "var(--foreground)" }}>
+          Seu Histórico de Estudo
+        </h1>
+        <p style={{ textAlign: "center", fontStyle: "italic", opacity: 0.8 }}>
           {percentualGeral < 30 
             ? "🤖 IA: Você está no início da jornada. Foque em Legislação primeiro!" 
             : "🤖 IA: Ótimo progresso! Seu domínio em Direção Defensiva está acima da média."}
         </p>
-        </div>
+      </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px" }}>
+      {/* AJUSTE AQUI: O grid agora é responsivo e muda para 1 coluna no celular */}
+      <div style={{ 
+        display: "grid", 
+        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", 
+        gap: "30px" 
+      }}>
 
-          {/* Card Esquerdo: Progresso em Vídeos (Círculo) */}
+        {/* Card Esquerdo: Progresso em Vídeos */}
+        <div style={{
+          background: "var(--card-bg)",
+          padding: "40px",
+          borderRadius: "15px",
+          border: "1px solid var(--border)",
+          textAlign: "center",
+          boxShadow: isDarkMode ? "none" : "0 4px 12px rgba(0,0,0,0.05)",
+          transition: "all 0.3s ease"
+        }}>
           <div style={{
-            background: "var(--card-bg)",
-            padding: "40px",
-            borderRadius: "15px",
-            border: "1px solid var(--border)",
-            textAlign: "center",
-            boxShadow: isDarkMode ? "none" : "0 4px 12px rgba(0,0,0,0.05)",
-            transition: "all 0.3s ease"
+            width: "180px", height: "180px", borderRadius: "50%",
+            border: `6px solid var(--border)`,
+            margin: "0 auto 25px",
+            display: "flex", alignItems: "center", justifyContent: "center", position: "relative"
           }}>
+            <span style={{ fontSize: "42px", color: "var(--foreground)", fontWeight: "bold" }}>
+              {percentualGeral}%
+            </span>
+
             <div style={{
-              width: "180px", height: "180px", borderRadius: "50%",
-              // Borda de fundo do círculo agora é dinâmica
-              border: `6px solid var(--border)`,
-              margin: "0 auto 25px",
-              display: "flex", alignItems: "center", justifyContent: "center", position: "relative"
-            }}>
-              {/* Texto do percentual agora é dinâmico (--foreground) */}
-              <span style={{ fontSize: "42px", color: "var(--foreground)", fontWeight: "bold" }}>
-                {percentualGeral}%
-              </span>
-
-              {/* Preenchimento do círculo agora é dinâmico (--primary) */}
-              <div style={{
-                position: "absolute", inset: "-6px", borderRadius: "50%",
-                border: `6px solid var(--primary)`,
-                clipPath: `inset(${100 - percentualGeral}% 0 0 0)`,
-                transform: "rotate(180deg)",
-                transition: "all 1s ease",
-                // Adicionei um brilho sutil se for dark mode
-                boxShadow: isDarkMode ? "0 0 15px var(--primary)" : "none"
-              }} />
-            </div>
-            <h3 style={{ fontSize: "20px", marginBottom: "10px", color: "var(--foreground)", fontWeight: "bold" }}>
-              Vídeo-Aulas
-            </h3>
-            <p style={{ color: "var(--foreground)", opacity: 0.7, fontSize: "15px" }}>
-              Você concluiu {concluidos.length} de {totalAulas} aulas.
-            </p>
+              position: "absolute", inset: "-6px", borderRadius: "50%",
+              border: `6px solid var(--primary)`,
+              clipPath: `inset(${100 - percentualGeral}% 0 0 0)`,
+              transform: "rotate(180deg)",
+              transition: "all 1s ease",
+              boxShadow: isDarkMode ? "0 0 15px var(--primary)" : "none"
+            }} />
           </div>
-          
+          <h3 style={{ fontSize: "20px", marginBottom: "10px", color: "var(--foreground)", fontWeight: "bold" }}>
+            Vídeo-Aulas
+          </h3>
+          <p style={{ color: "var(--foreground)", opacity: 0.7, fontSize: "15px" }}>
+            Você concluiu {concluidos.length} de {totalAulas} aulas.
+          </p>
+        </div>
+        
+        {/* Card Direito: Estatísticas por Categoria */}
+        <div style={{
+          background: "var(--card-bg)",
+          padding: "40px",
+          borderRadius: "15px",
+          border: "1px solid var(--border)",
+          boxShadow: isDarkMode ? "none" : "0 4px 12px rgba(0,0,0,0.05)",
+          transition: "all 0.3s ease"
+        }}>
+          <h3 style={{ fontSize: "18px", marginBottom: "25px", color: "var(--primary)", fontWeight: "bold" }}>
+            Domínio por Matéria
+          </h3>
 
-          {/* Card Direito: Estatísticas por Categoria (Barras Lineares) */}
-          <div style={{
-            background: "var(--card-bg)",
-            padding: "40px",
-            borderRadius: "15px",
-            border: "1px solid var(--border)",
-            boxShadow: isDarkMode ? "none" : "0 4px 12px rgba(0,0,0,0.05)",
-            transition: "all 0.3s ease"
-          }}>
-            <h3 style={{ fontSize: "18px", marginBottom: "25px", color: "var(--primary)", fontWeight: "bold" }}>
-              Domínio por Matéria
-            </h3>
-
-            {categorias.map((cat, index) => {
-              const nota = notasSimuladas[index] || 0;
-              return (
-                <div key={cat} style={{ marginBottom: "20px" }}>
-                  <div style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    marginBottom: "8px",
-                    fontSize: "12px"
-                  }}>
-                    {/* CORREÇÃO: Removi o isActive daqui. Agora usa apenas var(--foreground) */}
-                    <span style={{ color: "var(--foreground)" }}>
-                      {cat}
-                    </span>
-                    <span style={{ color: "var(--foreground)", fontWeight: "bold" }}>
-                      {nota}%
-                    </span>
-                  </div>
-
-                  <div style={{
-                    width: "100%",
-                    height: "6px",
-                    background: "var(--border)",
-                    borderRadius: "3px"
-                  }}>
-                    <div style={{
-                      width: `${nota}%`,
-                      height: "100%",
-                      background: "var(--primary)",
-                      boxShadow: isDarkMode ? "0 0 10px var(--primary)" : "none",
-                      transition: "width 1s ease",
-                      borderRadius: "3px"
-                    }} />
-                  </div>
+          {categorias.map((cat, index) => {
+            const nota = notasSimuladas[index] || 0;
+            return (
+              <div key={cat} style={{ marginBottom: "20px" }}>
+                <div style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginBottom: "8px",
+                  fontSize: "12px"
+                }}>
+                  <span style={{ color: "var(--foreground)" }}>{cat}</span>
+                  <span style={{ color: "var(--foreground)", fontWeight: "bold" }}>{nota}%</span>
                 </div>
-              );
-            })}
-          </div>
 
+                <div style={{
+                  width: "100%",
+                  height: "6px",
+                  background: "var(--border)",
+                  borderRadius: "3px"
+                }}>
+                  <div style={{
+                    width: `${nota}%`,
+                    height: "100%",
+                    background: "var(--primary)",
+                    boxShadow: isDarkMode ? "0 0 10px var(--primary)" : "none",
+                    transition: "width 1s ease",
+                    borderRadius: "3px"
+                  }} />
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        <div style={{ marginTop: "50px", textAlign: "center" }}>
-          <button
-            onClick={() => window.location.href = '/simulados'}
-            style={{
-              background: "transparent",
-              // Botão segue o tema: Ouro no Dark, Azul no Light
-              border: `1px solid var(--primary)`,
-              color: "var(--primary)",
-              padding: "15px 40px",
-              borderRadius: "4px",
-              cursor: "pointer",
-              fontSize: "13px",
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              fontWeight: "bold",
-              transition: "all 0.2s ease"
-            }}
-            onMouseOver={(e) => e.currentTarget.style.background = isDarkMode ? "rgba(200,169,110,0.1)" : "rgba(0,86,179,0.05)"}
-            onMouseOut={(e) => e.currentTarget.style.background = "transparent"}
-          >
-            Reforçar Conhecimento com Simulado
-          </button>
-        </div>
-      </main>
-    </div>
+      </div>
+
+      <div style={{ marginTop: "50px", textAlign: "center" }}>
+        <button
+          onClick={() => window.location.href = '/simulados'}
+          style={{
+            background: "transparent",
+            border: `1px solid var(--primary)`,
+            color: "var(--primary)",
+            padding: "15px 40px",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontSize: "13px",
+            letterSpacing: "2px",
+            textTransform: "uppercase",
+            fontWeight: "bold",
+            transition: "all 0.2s ease"
+          }}
+          onMouseOver={(e) => e.currentTarget.style.background = isDarkMode ? "rgba(200,169,110,0.1)" : "rgba(0,86,179,0.05)"}
+          onMouseOut={(e) => e.currentTarget.style.background = "transparent"}
+        >
+          Reforçar Conhecimento com Simulado
+        </button>
+      </div>
+    </main>
+  </div>
   );
-};
+}
