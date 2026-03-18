@@ -25,7 +25,7 @@ export default function Biblioteca() {
     titulo: "Manual de Primeiros Socorros",
     orgao: "Diretriz Oficial",
     // Link alternativo mais estável do Ministério da Saúde/Infraestrutura
-    link: "/manuais/Primeiros socorros.pdf",
+    link: "/manuais/Primeiros_socorros.pdf",
     cor: "#E05C5C",
     icon: "🚑"
   },
