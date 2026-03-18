@@ -3,10 +3,12 @@
 import { FileSpreadsheet } from "lucide-react";
 
 interface Aluno {
+ id: string;
   nome: string;
   cpf: string;
   email: string;
   status: string;
+  data_nascimento: string; 
 }
 const calcularIdade = (dataString: string) => {
   if (!dataString) return "";
