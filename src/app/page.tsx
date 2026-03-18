@@ -31,6 +31,12 @@ export default function LoginPage() {
     senha: "",
     dataNascimento: "" // O campo novo que criamos!
   });
+
+  // COLOQUE ELA AQUI (FORA DE QUALQUER OUTRA FUNÇÃO)
+  const avisarIA = (mensagem: string) => {
+    const evento = new CustomEvent("ia-notificacao", { detail: mensagem });
+    window.dispatchEvent(evento);
+  };
   const validarIdade = (dataString: string) => {
   if (!dataString) return false;
 
@@ -50,7 +56,7 @@ export default function LoginPage() {
 
 const recuperarSenha = async () => {
   if (!email) {
-    alert("Digite seu email primeiro");
+    avisarIA("Digite seu email primeiro");
     return;
   }
 
