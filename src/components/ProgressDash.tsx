@@ -5,6 +5,8 @@ interface ProgressProps {
   concluidos: number;
   total: number;
   titulo?: string; // 👈 ADICIONA ISSO
+  onClose: () => void;
+  
 }
 
 export default function ProgressDash({ concluidos, total, titulo }: ProgressProps) {
