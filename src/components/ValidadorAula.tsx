@@ -6,46 +6,39 @@ import Webcam from "react-webcam";
 import { Camera, CheckCircle, Video } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
-export default function ValidadorPresenca({ linkAula, alunoId }: { linkAula: string, alunoId: string }) {
+export default function ValidadorPresenca({ linkAula, alunoId, onClose }: { linkAula: string, alunoId: string, onClose: any }) {
   const webcamRef = useRef<Webcam>(null);
   const [imgSrc, setImgSrc] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);
   const [validado, setValidado] = useState(false);
 
   const capturar = useCallback(async () => {
-  const imagem = webcamRef.current?.getScreenshot();
-  
-  // Pegamos o ID do localStorage caso o 'alunoId' venha vazio
-  const idReal = alunoId || localStorage.getItem("user-id");
+    const imagem = webcamRef.current?.getScreenshot();
+    if (imagem) {
+      setImgSrc(imagem);
+      setEnviando(true);
 
-  if (imagem && idReal) {
-    setImgSrc(imagem);
-    setEnviando(true);
+      // SALVAR A FOTO NO SUPABASE (Tabela de Presenças)
+      const { error } = await supabase.from("presencas").insert([
+        { 
+          aluno_id: alunoId, 
+          foto: imagem, 
+          data_hora: new Date().toISOString(),
+          tipo: 'entrada_aula' 
+        }
+      ]);
 
-    // SALVAR A FOTO NO SUPABASE
-    const { error } = await supabase.from("presencas").insert([
-      { 
-        // Usamos Number() para garantir que vá como NÚMERO e não texto
-        aluno_id: Number(idReal), 
-        foto: imagem, 
-        data_hora: new Date().toISOString(),
-        tipo: 'entrada_aula' 
+      if (!error) {
+        setValidado(true);
+        // Após 2 segundos, abre a aula automaticamente
+        setTimeout(() => window.open(linkAula, "_blank"), 2000);
+      } else {
+        alert("Erro ao validar presença. Tente novamente.");
+        setImgSrc(null);
       }
-    ]);
-
-    if (!error) {
-      setValidado(true);
-      setTimeout(() => window.open(linkAula, "_blank"), 2000);
-    } else {
-      console.error("Erro detalhado do Supabase:", error); // Isso ajuda a ver o erro no F12
-      alert("Erro ao validar presença: " + error.message);
-      setImgSrc(null);
+      setEnviando(false);
     }
-    setEnviando(false);
-  } else {
-    alert("Erro: ID do aluno não encontrado. Tente fazer login novamente.");
-  }
-}, [webcamRef, linkAula, alunoId]);
+  }, [webcamRef, linkAula, alunoId]);
 
   return (
     <div style={modalStyle}>
