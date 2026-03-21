@@ -4,7 +4,7 @@
 interface ProgressProps {
   concluidos: number;
   total: number;
-  titulo: string; // 👈 ADICIONA ISSO
+  titulo?: string; // 👈 ADICIONA ISSO
 }
 
 export default function ProgressDash({ concluidos, total, titulo }: ProgressProps) {

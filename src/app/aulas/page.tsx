@@ -125,7 +125,7 @@ export default function AulasPage() {
   useEffect(() => {
 
     // Vou usar 8 minutos (480s) como padrão caso não exista no seu JSON.
-   const duracaoVideo = (activeVideo as any).duracaoSegundos || 480;
+    const duracaoVideo = (activeVideo as any).duracaoSegundos || 480;
     const metaSegundos = duracaoVideo * 0.7;
 
     if (segundosPassados >= metaSegundos && !podeConcluir) {
@@ -137,7 +137,7 @@ export default function AulasPage() {
   }, [segundosPassados, activeVideo, podeConcluir]);
 
   // --- CÁLCULO PARA O BOTÃO ---
-     const duracaoVideo = (activeVideo as any).duracaoSegundos || 480;
+  const duracaoVideo = (activeVideo as any).duracaoSegundos || 480;
   const meta = Math.ceil(duracaoVideo * 0.7);
   const faltam = meta - segundosPassados;
 
@@ -157,7 +157,11 @@ export default function AulasPage() {
       <RankingWidget />
 
       <div style={{ background: "var(--card-bg)", borderBottom: "1px solid var(--border)", padding: "10px 0" }}>
-        <ProgressDash concluidos={concluidos.length} total={videos.length} />
+        <ProgressDash
+          titulo="Progresso do Curso"
+          concluidos={concluidos.length}
+          total={videos.length}
+        />
       </div>
 
       <main style={{ maxWidth: 1300, margin: "0 auto", padding: "40px 32px" }}>
