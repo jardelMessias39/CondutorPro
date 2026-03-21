@@ -1,114 +1,27 @@
 [
-  {
-    "id": "v001",
-    "titulo": "Simulado Detran 2026: Prova Teórica Completa",
-    "canal": "CFC Digital",
-    "categoria": "Legislação",
-    "youtubeId": "VBMwApDUj2E",
-    "descricao": "Simulado completo com as questões mais cobradas. Excelente para revisar Legislação e sinalização antes da prova oficial."
-  },
-  {
-    "id": "v002",
-    "titulo": "Direção Defensiva: Aprenda a dirigir com segurança",
-    "canal": "PROLife21",
-    "categoria": "Prática",
-    "youtubeId": "-kIzHPSecmg",
-    "descricao": "Técnicas essenciais de direção defensiva para evitar acidentes e entender o comportamento de risco nas vias."
-  },
-  {
-    "id": "v003",
-    "titulo": "Primeiros Socorros: Controle de Hemorragias",
-    "canal": "IBRAPH",
-    "categoria": "Prática",
-    "youtubeId": "XIH8v579xDo",
-    "descricao": "Aula prática sobre como agir em casos de acidentes com vítimas e sangramentos. Conteúdo obrigatório do CTB."
-  },
-  {
-    "id": "v004",
-    "titulo": "Mecânica Básica: Tudo que cai na prova",
-    "canal": "SIM PASSEI",
-    "categoria": "Legislação",
-    "youtubeId": "ChEsTCNvKrI",
-    "descricao": "Entenda o funcionamento básico do veículo: motor, sistema elétrico, freios e suspensão de forma simplificada."
-  },
-  {
-    "id": "v005",
-    "titulo": "Como passar no Exame de Direção (Dicas de Ouro)",
-    "canal": "LegTransito",
-    "categoria": "Prática",
-    "youtubeId": "dKjLYjFjUwA",
-    "descricao": "Dicas específicas para o dia do exame prático. Como controlar o nervosismo e evitar faltas eliminatórias."
-  },
-  {
-    "id": "v006",
-    "titulo": "Habilitação: categorias A, B, C, D e E explicadas",
-    "canal": "Detran Explica",
-    "categoria": "Legislação",
-    "youtubeId": "tgbNymZ7vqY",
-    "descricao": "Guia de Observação: Foque nos requisitos de idade para cada categoria e quais veículos cada uma permite conduzir. Questão certa na prova teórica!"
-  },
-  {
-    "id": "v007",
-    "titulo": "Direção defensiva: técnicas avançadas em rodovias",
-    "canal": "AutoEsporte Seguro",
-    "categoria": "Prática",
-    "youtubeId": "2vjPBrBU-TM",
-    "descricao": "Guia de Observação: Observe a importância da distância de seguimento e como o motorista antecipa as ações dos outros veículos para evitar colisões."
-  },
-  {
-    "id": "v008",
-    "titulo": "Estacionamento em declive e aclive: técnica correta",
-    "canal": "Escola de Condutores",
-    "categoria": "Prática",
-    "youtubeId": "kJQP7kiw5Fk",
-    "descricao": "Guia de Observação: Atenção ao posicionamento das rodas em relação ao meio-fio e o uso correto do freio de mão. Essencial para não perder pontos no exame."
-  },
-  {
-    "id": "v009",
-    "titulo": "Rotatórias e Retornos: Quem tem a preferência?",
-    "canal": "Escola de Condutores",
-    "categoria": "Prática",
-    "youtubeId": "3JZ_D3ELwOQ",
-    "descricao": "Guia de Observação: O segredo aqui é a sinalização antecipada (setas) e o respeito à preferência de quem já está circulando na rotatória."
-  },
-  {
-    "id": "v010",
-    "titulo": "Primeiros Passos com a CNH no bolso",
-    "canal": "LegTransito",
-    "categoria": "Prática",
-    "youtubeId": "_xBsxKDPf-E",
-    "descricao": "Guia de Observação: Vídeo motivacional e prático para o aluno que acabou de passar. Dicas de como perder o medo de dirigir sozinho após a aprovação."
-  },
-  {
-    "id": "v011",
-    "titulo": "Análise de Acidente: Aquaplanagem e Pista Molhada",
-    "canal": "Segurança Viária",
-    "categoria": "Acidentes",
-    "youtubeId": "BYmoEf2Rab0",
-    "descricao": "Guia de Instrutor: Observe como a falta de redução de velocidade na chuva causou a perda de contato dos pneus com o solo. Em caso de aquaplanagem, nunca pise no freio bruscamente; tire o pé do acelerador e mantenha a direção reta."
-  },
-  {
-    "id": "v012",
-    "titulo": "Colisão Transversal: O perigo do cruzamento",
-    "canal": "Câmeras de Trânsito",
-    "categoria": "Acidentes",
-    "youtubeId": "9bZkp7q19f0",
-    "descricao": "Guia de Instrutor: Este vídeo ilustra o desrespeito à sinalização de parada obrigatória. Analise que mesmo quem tem a preferência deve praticar a direção defensiva e olhar os dois lados antes de avançar."
-  },
-  {
-    "id": "v013",
-    "titulo": "Engavetamento: Distância de Seguimento",
-    "canal": "Educação no Trânsito",
-    "categoria": "Acidentes",
-    "youtubeId": "dQw4w9WgXcQ",
-    "descricao": "Guia de Instrutor: Veja como a proximidade excessiva entre os veículos impede o tempo de reação. Lembre-se da 'Regra dos 2 segundos' para manter uma distância segura e evitar colisões traseiras."
-  },
-  {
-    "id": "v014",
-    "titulo": "Acidente por Ponto Cego em Rodovia",
-    "canal": "Direção Real",
-    "categoria": "Acidentes",
-    "youtubeId": "ScMzIvxBSi4",
-    "descricao": "Guia de Instrutor: O motorista iniciou a mudança de faixa sem verificar o ponto cego. Para a prova e para a vida: sinalize com antecedência e use o movimento de cabeça para conferir os espelhos."
-  }
+  { "id": "direcao_01", "titulo": "Direção Defensiva - Aula 1", "categoria": "direcao", "youtubeId": "0Rza-Fwb6w0", "descricao": "Fundamentos da direção defensiva." },
+  { "id": "direcao_02", "titulo": "Direção Defensiva - Aula 2", "categoria": "direcao", "youtubeId": "77jrtsrYvr0", "descricao": "Prevenção de acidentes." },
+  { "id": "direcao_03", "titulo": "Direção Defensiva - Aula 3", "categoria": "direcao", "youtubeId": "AIY6wwp_PIE", "descricao": "Comportamento seguro." },
+  { "id": "direcao_04", "titulo": "Direção Defensiva - Aula 4", "categoria": "direcao", "youtubeId": "F2zj9IkOEXc", "descricao": "Técnicas seguras." },
+  { "id": "direcao_05", "titulo": "Direção Defensiva - Aula 5", "categoria": "direcao", "youtubeId": "Y8fAhxcdxAI", "descricao": "Evitar riscos." },
+
+  { "id": "direcao_06", "titulo": "Condições Adversas", "categoria": "direcao", "youtubeId": "MGGKZBRLTFU", "descricao": "Direção em risco." },
+  { "id": "direcao_07", "titulo": "Condições Adversas 2", "categoria": "direcao", "youtubeId": "rgLpPE3OzIU", "descricao": "Situações perigosas." },
+  { "id": "direcao_08", "titulo": "Distância de Segurança", "categoria": "direcao", "youtubeId": "v1mupE-bUrc", "descricao": "Distância correta." },
+
+  { "id": "legislacao_01", "titulo": "Regras de Preferência", "categoria": "legislacao", "youtubeId": "EkpO2R-omjA", "descricao": "Prioridade no trânsito." },
+  { "id": "legislacao_02", "titulo": "Mudança de Direção", "categoria": "legislacao", "youtubeId": "6DUJ9qLqEVE", "descricao": "Manobras corretas." },
+
+  { "id": "sinalizacao_01", "titulo": "Sinalização de Trânsito", "categoria": "sinalizacao", "youtubeId": "6APZNSx2cy4", "descricao": "Introdução." },
+  { "id": "sinalizacao_02", "titulo": "Sinalização Vertical", "categoria": "sinalizacao", "youtubeId": "sMh_19QcEsA", "descricao": "Regulamentação." },
+  { "id": "sinalizacao_03", "titulo": "Sinalização de Indicação", "categoria": "sinalizacao", "youtubeId": "qfIDlQWRusA", "descricao": "Placas informativas." },
+
+  { "id": "legislacao_03", "titulo": "Legislação - Aula 1", "categoria": "legislacao", "youtubeId": "5n2b4sNWdDE", "descricao": "Introdução ao CTB." },
+  { "id": "legislacao_04", "titulo": "Legislação - Aula 2", "categoria": "legislacao", "youtubeId": "JZzMkUDorug", "descricao": "Regras gerais." },
+  { "id": "legislacao_05", "titulo": "Legislação - Aula 3", "categoria": "legislacao", "youtubeId": "RtmJhMYhH8s", "descricao": "Normas do trânsito." },
+
+  { "id": "socorros_01", "titulo": "Primeiros Socorros - Aula 1", "categoria": "primeiros_socorros", "youtubeId": "LqFi04wW8dU", "descricao": "Atendimento inicial." },
+  { "id": "socorros_02", "titulo": "Primeiros Socorros - Aula 2", "categoria": "primeiros_socorros", "youtubeId": "lGVyAxZH8Ug", "descricao": "Procedimentos básicos." },
+  { "id": "socorros_03", "titulo": "Primeiros Socorros - Aula 3", "categoria": "primeiros_socorros", "youtubeId": "W5ej0d_qCOo", "descricao": "Emergências." },
+  { "id": "socorros_04", "titulo": "Primeiros Socorros - Aula 4", "categoria": "primeiros_socorros", "youtubeId": "dM28SGRdAfE", "descricao": "Acidentes." }
 ]

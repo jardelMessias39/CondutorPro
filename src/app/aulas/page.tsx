@@ -7,11 +7,19 @@ import CourseHeader from '@/components/CourseHeader';
 import RankingWidget from "@/components/Ranking/RankingWidget";
 import { supabase } from "@/lib/supabase";
 
+// Mapeamento: O que aparece no botão -> O que está escrito no JSON
+const CATEGORY_MAP: Record<string, string> = {
+  "Todos": "Todos",
+  "Acidentes": "primeiros_socorros",    // Se no JSON estiver "socorros"
+  "Legislação": "legislacao", // Se no JSON estiver "legislacao"
+  "Prática": "direcao"       // Se no JSON estiver "direcao" ou "pratica"
+};
+
 const CATEGORY_CONFIG: Record<string, any> = {
   "Todos": { icon: "⊞", color: "#C8A96E", bg: "rgba(200,169,110,0.15)" },
-  "Acidentes": { icon: "⚠", color: "#E05C5C", bg: "rgba(224,92,92,0.15)" },
-  "Legislação": { icon: "§", color: "#5C8FE0", bg: "rgba(92,143,224,0.15)" },
-  "Prática": { icon: "◈", color: "#5CBF8A", bg: "rgba(92,191,138,0.15)" },
+  "socorros": { icon: "⚠", color: "#E05C5C", bg: "rgba(224,92,92,0.15)" },
+  "legislacao": { icon: "§", color: "#5C8FE0", bg: "rgba(92,143,224,0.15)" },
+  "direcao": { icon: "◈", color: "#5CBF8A", bg: "rgba(92,191,138,0.15)" },
 };
 
 export default function AulasPage() {
@@ -21,187 +29,233 @@ export default function AulasPage() {
   const [concluidos, setConcluidos] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [playerReady, setPlayerReady] = useState(false);
+  const [segundosPassados, setSegundosPassados] = useState(0);
+  const [tempoTotalVideo, setTempoTotalVideo] = useState(0); // em segundos
   const [podeConcluir, setPodeConcluir] = useState(false);
+
+  // Refs
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Nomes que aparecem nos botões
   const categories = ["Todos", "Acidentes", "Legislação", "Prática"];
 
-  // 1. CARREGAR PROGRESSO INICIAL
+  // 1. CARREGAR PROGRESSO
   useEffect(() => {
     const salvo = localStorage.getItem("progresso-aulas");
-    if (salvo) setConcluidos(JSON.parse(salvo));
+    if (salvo) {
+      const listaIds = JSON.parse(salvo);
+      setConcluidos(listaIds);
+    }
   }, []);
 
-  // 2. LOGICA DA TRAVA DE SEGURANÇA (O que a Autoescola pediu)
-  useEffect(() => {
-    setPodeConcluir(false); // Bloqueia ao trocar vídeo
-    
-    // Se já concluiu a aula antes, libera direto
-    if (concluidos.includes(activeVideo.id)) {
-      setPodeConcluir(true);
-      return;
-    }
+  // 2. A LOGICA DE FILTRAGEM (Mais robusta)
+  const filtered = videos.filter(v => {
+    if (selectedCategory === "Todos") return true;
 
-    // Timer que simula os 80% da aula assistida (Ajuste o tempo aqui)
-    const tempoNecessario = 800000; // 40 segundos para teste
-    const timer = setTimeout(() => {
-      setPodeConcluir(true);
-      window.dispatchEvent(new CustomEvent("ia-notificacao", { 
-        detail: "🎯 Aula assistida o suficiente! Você já pode ganhar seu XP." 
-      }));
-    }, tempoNecessario);
+    // Isso aqui ignora maiúsculas/minúsculas e espaços extras para não dar erro
+    const categoriaAlvo = CATEGORY_MAP[selectedCategory];
+    return v.categoria?.toLowerCase() === categoriaAlvo?.toLowerCase();
+  });
 
-    return () => clearTimeout(timer);
-  }, [activeVideo.id, concluidos]);
-
-  // 3. MOTOR DE GAMIFICAÇÃO (BANCO DE DADOS)
-  const ganharXpEEvoluir = async (quantidade: number, aulaId: string) => {
-    const userId = localStorage.getItem("user-id");
-    if (!userId) return;
-
-    try {
-      const { data: aluno } = await supabase
-        .from('alunos')
-        .select('xp, nivel, aulas_concluidas')
-        .eq('id', userId)
-        .single();
-
-      const xpAtual = aluno?.xp || 0;
-      const nivelAntigo = aluno?.nivel || "Recruta";
-      const concluidasAntigas = aluno?.aulas_concluidas || [];
-
-      if (concluidasAntigas.includes(aulaId)) return;
-
-      const novasConcluidas = [...new Set([...concluidasAntigas, aulaId])];
-      const novoXp = xpAtual + quantidade;
-
-      let novoNivel = "Recruta";
-      if (novoXp > 2000) novoNivel = "Piloto Pro";
-      else if (novoXp > 1000) novoNivel = "Motorista";
-      else if (novoXp > 500) novoNivel = "Aprendiz";
-
-      await supabase
-        .from('alunos')
-        .update({ xp: novoXp, nivel: novoNivel, aulas_concluidas: novasConcluidas })
-        .eq('id', userId);
-
-      window.dispatchEvent(new Event("xpAtualizado"));
-      const msg = novoNivel !== nivelAntigo ? `🚀 EVOLUÇÃO! Nível ${novoNivel}!` : `🎯 +${quantidade} XP!`;
-      window.dispatchEvent(new CustomEvent("ia-notificacao", { detail: msg }));
-    } catch (e) { console.error(e); }
-  };
-
-  // 4. FUNÇÃO DO BOTÃO FINALIZAR
-  const finalizarAula = async (idDaAula: string) => {
-    if (isLoading || concluidos.includes(idDaAula)) return;
-
-    if (!podeConcluir) {
-      window.dispatchEvent(new CustomEvent("ia-notificacao", { 
-        detail: "⚠️ IA: Você precisa assistir a aula para liberar o XP!" 
-      }));
-      return;
-    }
-
-    setIsLoading(true);
-    try {
-      const novaLista = [...concluidos, idDaAula];
-      setConcluidos(novaLista);
-      localStorage.setItem("progresso-aulas", JSON.stringify(novaLista));
-      await ganharXpEEvoluir(100, idDaAula);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // 5. SELEÇÃO DE VÍDEOS
+  // 3. O HANDLER DE CLIQUE (Corrigido para resetar o vídeo ativo ao filtrar)
   const handleCategoryChange = (cat: string) => {
     setSelectedCategory(cat);
-    const newFiltered = cat === "Todos" ? videos : videos.filter(v => v.categoria === cat);
+
+    const techName = CATEGORY_MAP[cat];
+    const newFiltered = cat === "Todos"
+      ? videos
+      : videos.filter(v => v.categoria?.toLowerCase() === techName?.toLowerCase());
+
     if (newFiltered.length > 0) {
       setActiveVideo(newFiltered[0]);
       setPlayerReady(false);
     }
   };
 
-  const filtered = selectedCategory === "Todos" ? videos : videos.filter(v => v.categoria === selectedCategory);
+  const finalizarAula = async (idDaAula: string) => {
+    if (isLoading || concluidos.includes(idDaAula)) return;
+    if (!podeConcluir) return;
+
+    setIsLoading(true);
+    const novaLista = [...concluidos, idDaAula];
+    setConcluidos(novaLista);
+    localStorage.setItem("progresso-aulas", JSON.stringify(novaLista));
+
+    await ganharXpEEvoluir(100, idDaAula);
+    setIsLoading(false);
+  };
+
+  const ganharXpEEvoluir = async (quantidade: number, aulaId: string) => {
+    const userId = localStorage.getItem("user-id");
+    if (!userId) return;
+    try {
+      const { data: aluno } = await supabase.from('alunos').select('*').eq('id', userId).single();
+      const novasConcluidas = [...new Set([...(aluno?.aulas_concluidas || []), aulaId])];
+      await supabase.from('alunos').update({
+        xp: (aluno?.xp || 0) + quantidade,
+        aulas_concluidas: novasConcluidas
+      }).eq('id', userId);
+      window.dispatchEvent(new Event("xpAtualizado"));
+    } catch (e) { console.error(e); }
+  };
+  // --- LÓGICA DO CRONÔMETRO ---
+  useEffect(() => {
+    // Resetar tudo quando trocar de vídeo
+    setSegundosPassados(0);
+    setPodeConcluir(false);
+    if (timerRef.current) clearInterval(timerRef.current);
+
+    // Se já concluiu antes, libera direto e não precisa de timer
+    if (concluidos.includes(activeVideo.id)) {
+      setPodeConcluir(true);
+      return;
+    }
+
+    // Inicia o cronômetro (só conta se o aluno estiver na página)
+    timerRef.current = setInterval(() => {
+      setSegundosPassados((prev) => prev + 1);
+    }, 1000);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [activeVideo.id, concluidos]);
+
+  // --- VERIFICAÇÃO DOS 70% ---
+  useEffect(() => {
+    // Simulando a duração (O ideal é ter a duração no seu VIDEOS_DATA.json)
+    // Se não tiver no JSON, vamos estimar 10 min (600s) ou pegar via API.
+    // Vou usar 8 minutos (480s) como padrão caso não exista no seu JSON.
+    const duracaoVideo = activeVideo.duracaoSegundos || 480;
+    const metaSegundos = duracaoVideo * 0.7;
+
+    if (segundosPassados >= metaSegundos && !podeConcluir) {
+      setPodeConcluir(true);
+      window.dispatchEvent(new CustomEvent("ia-notificacao", {
+        detail: "🎯 Meta de 70% atingida! Conhecimento absorvido, XP liberado!"
+      }));
+    }
+  }, [segundosPassados, activeVideo, podeConcluir]);
+
+  // --- CÁLCULO PARA O BOTÃO ---
+  const duracaoVideo = activeVideo.duracaoSegundos || 480;
+  const meta = Math.ceil(duracaoVideo * 0.7);
+  const faltam = meta - segundosPassados;
+
+  // Formata segundos em MM:SS
+  const formatarTempo = (s: number) => {
+    const min = Math.floor(s / 60);
+    const seg = s % 60;
+    return `${min}:${seg < 10 ? '0' : ''}${seg}`;
+  };
+
+  // Cor de destaque baseada na categoria real do vídeo ativo
   const catColor = CATEGORY_CONFIG[activeVideo.categoria]?.color || "#C8A96E";
 
   return (
-    <div style={{ minHeight: "100vh", background: "var(--background)", fontFamily: "serif", color: "var(--foreground)" }}>
+    <div style={{ minHeight: "100vh", background: "var(--background)", color: "var(--foreground)" }}>
       <CourseHeader activePage="Aulas" />
       <RankingWidget />
-      
+
       <div style={{ background: "var(--card-bg)", borderBottom: "1px solid var(--border)", padding: "10px 0" }}>
         <ProgressDash concluidos={concluidos.length} total={videos.length} />
       </div>
 
       <main style={{ maxWidth: 1300, margin: "0 auto", padding: "40px 32px" }}>
-        <div style={{ marginBottom: 36 }}>
-          <p style={{ fontSize: 12, letterSpacing: "2px", color: "var(--primary)", fontWeight: "bold", textTransform: "uppercase" }}>Módulo de Vídeo-Aulas</p>
-          <h1 style={{ fontSize: 32, fontWeight: "normal" }}>
-            <span style={{ color: catColor }}>{activeVideo.categoria}</span> — Preparação Elite
-          </h1>
-        </div>
-
         {/* FILTROS */}
-        <div style={{ display: "flex", gap: 10, marginBottom: 36, flexWrap: "wrap" }}>
-          {categories.map(cat => (
-            <button key={cat} onClick={() => handleCategoryChange(cat)} style={{
-              padding: "10px 22px", borderRadius: 4, border: selectedCategory === cat ? `1px solid ${CATEGORY_CONFIG[cat].color}` : "1px solid var(--border)",
-              background: selectedCategory === cat ? CATEGORY_CONFIG[cat].bg : "transparent", color: selectedCategory === cat ? CATEGORY_CONFIG[cat].color : "var(--foreground)",
-              cursor: "pointer", fontSize: 12, textTransform: "uppercase"
-            }}>{cat}</button>
-          ))}
+        <div style={{ display: "flex", gap: 10, marginBottom: 36 }}>
+          {categories.map(cat => {
+            const techKey = CATEGORY_MAP[cat]; // "primeiros_socorros"
+            const config = CATEGORY_CONFIG[techKey] || CATEGORY_CONFIG["Todos"];
+
+            return (
+              <button
+                key={cat}
+                onClick={() => handleCategoryChange(cat)}
+                style={{
+                  // ... seus estilos
+                  border: selectedCategory === cat ? `1px solid ${config.color}` : "1px solid var(--border)",
+                  background: selectedCategory === cat ? config.bg : "transparent",
+                }}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: 24 }}>
-          {/* LADO ESQUERDO: PLAYER */}
+          {/* PLAYER */}
           <div>
-            <div style={{ position: "relative", width: "100%", paddingTop: "56.25%", background: "#000", borderRadius: 8, overflow: "hidden", border: "1px solid var(--border)" }}>
-              {(!playerReady || isLoading) && (
-                <div style={{ position: "absolute", inset: 0, background: "#0D0E11", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 10 }}>
-                  <p style={{ color: "var(--primary)" }}>PREPARANDO AULA...</p>
-                </div>
-              )}
+            <div style={{ position: "relative", paddingTop: "56.25%", background: "#000", borderRadius: 8, overflow: "hidden" }}>
               <iframe
                 onLoad={() => setPlayerReady(true)}
                 src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?rel=0&modestbranding=1&autoplay=1`}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
-                allowFullScreen allow="autoplay; encrypted-media"
+                allowFullScreen allow="autoplay"
               />
             </div>
-
-            <div style={{ marginTop: 20, padding: 24, background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 8 }}>
-              {/* BOTÃO CONCLUIR COM TRAVA */}
+            <div style={{ marginTop: 20 }}>
               <button
                 onClick={() => finalizarAula(activeVideo.id)}
-                disabled={isLoading || (!podeConcluir && !concluidos.includes(activeVideo.id))}
+                disabled={isLoading || !podeConcluir}
                 style={{
-                  padding: "12px 24px", borderRadius: "4px", fontWeight: "bold", textTransform: "uppercase", cursor: (isLoading || !podeConcluir) ? "not-allowed" : "pointer",
-                  background: concluidos.includes(activeVideo.id) ? "rgba(92,191,138,0.1)" : (podeConcluir ? catColor : "#333"),
-                  border: `1px solid ${concluidos.includes(activeVideo.id) ? "#5CBF8A" : (podeConcluir ? catColor : "#444")}`,
-                  color: concluidos.includes(activeVideo.id) ? "#5CBF8A" : (podeConcluir ? "#000" : "#777"),
-                  width: "100%", marginBottom: 16, opacity: (podeConcluir || concluidos.includes(activeVideo.id)) ? 1 : 0.6
+                  padding: "18px",
+                  width: "100%",
+                  borderRadius: "8px",
+                  cursor: podeConcluir ? "pointer" : "not-allowed",
+                  background: concluidos.includes(activeVideo.id)
+                    ? "rgba(92,191,138,0.2)"
+                    : (podeConcluir ? "var(--primary)" : "#222"),
+                  border: `1px solid ${podeConcluir ? "var(--primary)" : "#444"}`,
+                  color: podeConcluir ? "#000" : "#666",
+                  fontWeight: "bold",
+                  transition: "all 0.4s ease",
+                  position: "relative",
+                  overflow: "hidden"
                 }}
               >
-                {isLoading ? "Salvando..." : (concluidos.includes(activeVideo.id) ? "✓ Aula Concluída" : (podeConcluir ? "Concluir Aula +100XP" : "⏳ Assista para liberar"))}
+                {/* Barra de progresso visual dentro do botão */}
+                {!podeConcluir && !concluidos.includes(activeVideo.id) && (
+                  <div style={{
+                    position: "absolute",
+                    left: 0, top: 0, bottom: 0,
+                    width: `${(segundosPassados / meta) * 100}%`,
+                    background: "rgba(200,169,110,0.1)",
+                    zIndex: 0,
+                    transition: "width 1s linear"
+                  }} />
+                )}
+
+                <span style={{ position: "relative", zIndex: 1 }}>
+                  {concluidos.includes(activeVideo.id)
+                    ? "✓ AULA CONCLUÍDA"
+                    : (podeConcluir
+                      ? "FINALIZAR E GANHAR +100 XP"
+                      : `AGUARDE MAIS ${formatarTempo(faltam)}`)}
+                </span>
               </button>
-              <div style={{ borderTop: "1px solid var(--border)", paddingTop: 16 }}>
-                <p style={{ fontSize: 15, lineHeight: 1.8, color: "var(--foreground)", opacity: 0.9 }}>{activeVideo.descricao}</p>
-              </div>
+
+              {!podeConcluir && !concluidos.includes(activeVideo.id) && (
+                <p style={{ fontSize: "11px", textAlign: "center", marginTop: "8px", opacity: 0.6 }}>
+                  Pela norma da portaria, assista pelo menos 70% do vídeo para validar.
+                </p>
+              )}
             </div>
           </div>
 
-          {/* LADO DIREITO: PLAYLIST */}
-          <div style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 8, padding: 15, maxHeight: "80vh", overflowY: "auto" }}>
-            <p style={{ color: "var(--foreground)", opacity: 0.5, fontSize: 11, textTransform: "uppercase", marginBottom: 15 }}>Conteúdo · {filtered.length} vídeos</p>
+          {/* PLAYLIST */}
+          <div style={{ background: "var(--card-bg)", borderRadius: 8, padding: 15, border: "1px solid var(--border)" }}>
+            <p style={{ opacity: 0.5, fontSize: 12 }}>{filtered.length} VÍDEOS ENCONTRADOS</p>
             {filtered.map((video) => (
               <button key={video.id} onClick={() => { setPlayerReady(false); setActiveVideo(video); }} style={{
-                display: "flex", gap: 12, padding: 10, borderRadius: 6, width: "100%", textAlign: "left", cursor: "pointer", background: video.id === activeVideo.id ? "rgba(200,169,110,0.1)" : "transparent",
-                border: video.id === activeVideo.id ? "1px solid var(--primary)" : "1px solid transparent", marginBottom: 6, alignItems: "center"
+                display: "flex", gap: 10, padding: 10, width: "100%", background: video.id === activeVideo.id ? "rgba(200,169,110,0.1)" : "transparent",
+                border: "none", borderBottom: "1px solid var(--border)", cursor: "pointer", textAlign: "left", alignItems: "center"
               }}>
-                <img src={`https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`} style={{ width: 80, height: 45, borderRadius: 4, opacity: concluidos.includes(video.id) ? 0.5 : 1 }} />
-                <p style={{ fontSize: 14, color: video.id === activeVideo.id ? "var(--primary)" : "var(--foreground)", margin: 0 }}>{video.titulo}</p>
+                <div style={{ width: 40, height: 40, background: "#333", borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {concluidos.includes(video.id) ? "✅" : "▶"}
+                </div>
+                <span style={{ color: "var(--foreground)", fontSize: 13 }}>{video.titulo}</span>
               </button>
             ))}
           </div>

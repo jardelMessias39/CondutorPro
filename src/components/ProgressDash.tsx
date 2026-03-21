@@ -4,9 +4,10 @@
 interface ProgressProps {
   concluidos: number;
   total: number;
+  titulo: string; // 👈 ADICIONA ISSO
 }
 
-export default function ProgressDash({ concluidos, total }: ProgressProps) {
+export default function ProgressDash({ concluidos, total, titulo }: ProgressProps) {
   const percentual = Math.round((concluidos / total) * 100) || 0;
 
   return (
@@ -31,8 +32,7 @@ export default function ProgressDash({ concluidos, total }: ProgressProps) {
           letterSpacing: "1px",
           fontWeight: "bold"
         }}>
-          Status do Treinamento
-        </h3>
+          {titulo}</h3>
         <p style={{ fontSize: "24px", margin: 0, color: "var(--foreground)" }}>
           {concluidos} <span style={{ fontSize: "14px", color: "var(--foreground)", opacity: 0.4 }}>de {total} módulos</span>
         </p>
