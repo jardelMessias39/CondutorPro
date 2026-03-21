@@ -123,10 +123,9 @@ export default function AulasPage() {
 
   // --- VERIFICAÇÃO DOS 70% ---
   useEffect(() => {
-    // Simulando a duração (O ideal é ter a duração no seu VIDEOS_DATA.json)
-    // Se não tiver no JSON, vamos estimar 10 min (600s) ou pegar via API.
+
     // Vou usar 8 minutos (480s) como padrão caso não exista no seu JSON.
-    const duracaoVideo = activeVideo.duracaoSegundos || 480;
+   const duracaoVideo = (activeVideo as any).duracaoSegundos || 480;
     const metaSegundos = duracaoVideo * 0.7;
 
     if (segundosPassados >= metaSegundos && !podeConcluir) {
@@ -138,7 +137,7 @@ export default function AulasPage() {
   }, [segundosPassados, activeVideo, podeConcluir]);
 
   // --- CÁLCULO PARA O BOTÃO ---
-  const duracaoVideo = activeVideo.duracaoSegundos || 480;
+     const duracaoVideo = (activeVideo as any).duracaoSegundos || 480;
   const meta = Math.ceil(duracaoVideo * 0.7);
   const faltam = meta - segundosPassados;
 
