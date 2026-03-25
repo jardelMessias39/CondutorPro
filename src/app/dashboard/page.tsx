@@ -56,25 +56,33 @@ export default function DashboardPrincipal() {
     return () => clearInterval(intervalo);
   }, []);
 
-  // 1. SISTEMA ONLINE (Heartbeat único e limpo)
+ // SISTEMA ONLINE (Heartbeat + Focus) unificado
   useEffect(() => {
-    const avisarQueEstouOnline = async () => {
+    const executarHeartbeat = async () => {
       const id = localStorage.getItem("user-id");
       if (!id) return;
-      await supabase.from("alunos").update({ ultima_atividade: new Date().toISOString() }).eq("id", id);
+      await supabase
+        .from("alunos")
+        .update({ ultima_atividade: new Date().toISOString() })
+        .eq("id", id);
     };
-    avisarQueEstouOnline();
-    const interval = setInterval(avisarQueEstouOnline, 20000); // 20 segundos
-    return () => clearInterval(interval);
+
+    // 1. Executa ao carregar a página
+    executarHeartbeat();
+
+    // 2. Executa sempre que o aluno voltar para a aba do navegador
+    const handleFocus = () => executarHeartbeat();
+    window.addEventListener("focus", handleFocus);
+
+    // 3. Executa a cada 20 segundos automaticamente
+    const interval = setInterval(executarHeartbeat, 20000);
+
+    // Limpeza ao sair da página
+    return () => {
+      window.removeEventListener("focus", handleFocus);
+      clearInterval(interval);
+    };
   }, []);
-
-// 2. EVENTO DE FOCUS PARA ATUALIZAR ONLINE
-  useEffect(() => {
-  const handleFocus = () => avisarQueEstouOnline();
-  window.addEventListener("focus", handleFocus);
-
-  return () => window.removeEventListener("focus", handleFocus);
-}, []);
 
   // 2. VERIFICAÇÃO DE ACESSO E CARREGAMENTO
   useEffect(() => {
