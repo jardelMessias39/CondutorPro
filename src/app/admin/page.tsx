@@ -14,29 +14,90 @@ import * as XLSX from "xlsx";
 const avisarIA = (mensagem: string) => {
     window.dispatchEvent(new CustomEvent("ia-notificacao", { detail: mensagem }));
   };
-
+// PAGINA ADMIN
 export default function AdminPage() {
   const [alunos, setAlunos] = useState<any[]>([]);
   const [busca, setBusca] = useState("");
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const [aulaAtiva, setAulaAtiva] = useState(false);
 
-  useEffect(() => {
-    fetchAlunos();
-    // REALTIME: Atualiza a lista sozinho se houver mudanças no banco
-    const channel = supabase
-      .channel('admin-realtime')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'alunos' }, () => fetchAlunos())
-      .subscribe();
-    return () => { supabase.removeChannel(channel); };
-  }, []);
+ useEffect(() => {
+  fetchAlunos();
 
+  const channel = supabase
+    .channel('admin-realtime')
+
+    // 🔥 NOVO ALUNO
+    .on('postgres_changes', 
+      { event: 'INSERT', schema: 'public', table: 'alunos' }, 
+      (payload) => {
+        setAlunos(prev => [payload.new, ...prev]);
+      }
+    )
+
+    // 🔥 ATUALIZAÇÕES (liberar, XP, etc)
+    .on('postgres_changes', 
+      { event: 'UPDATE', schema: 'public', table: 'alunos' }, 
+      (payload) => {
+        setAlunos(prev =>
+          prev.map(aluno =>
+            aluno.id === payload.new.id ? payload.new : aluno
+          )
+        );
+      }
+    )
+
+    // 🔥 EXCLUSÃO
+    .on('postgres_changes', 
+      { event: 'DELETE', schema: 'public', table: 'alunos' }, 
+      (payload) => {
+        setAlunos(prev =>
+          prev.filter(aluno => aluno.id !== payload.old.id)
+        );
+      }
+    )
+
+    .subscribe();
+
+  return () => {
+    supabase.removeChannel(channel);
+  };
+}, []);
+
+  // LIBERAR ALUNO
+  const liberar = async (id: number, tipo: 'aluno' | 'admin' | 'pendente') => {
+  const updateData: any = {
+    status: tipo === 'pendente' ? 'pendente' : 'ativo'
+  };
+
+  if (tipo !== 'pendente') {
+    updateData.role = tipo;
+  }
+
+  const { error } = await supabase
+    .from('alunos')
+    .update(updateData)
+    .eq('id', id);
+
+  if (!error) {
+    avisarIA("✅ Atualizado com sucesso!");
+
+    setAlunos(prev =>
+      prev.map(a =>
+        a.id === id ? { ...a, ...updateData } : a
+      )
+    );
+  }
+};
+
+// BUSCAR ALUNOS
   const fetchAlunos = async () => {
     const { data } = await supabase.from("alunos").select("*").order("created_at", { ascending: false });
     if (data) setAlunos(data);
     setLoading(false);
   };
-
+// ABRIR A AULA
   const abrirAulaOnline = async () => {
  const linkAula = "https://meet.google.com/thb-yybc-wnv";
 
@@ -54,23 +115,18 @@ export default function AdminPage() {
 };
 // ENCERRAR A AULA
 const encerrarAula = async () => {
-  console.log("Tentando encerrar a aula...");
-
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('configuracoes')
     .update({ valor: false })
-    .eq('chave', 'aula_ao_vivo')
-    .select(); // 👈 ISSO AQUI É O SEGREDO
-
-  console.log("RESULTADO:", data);
+    .eq('chave', 'aula_ao_vivo');
 
   if (error) {
-    console.error("Erro ao encerrar:", error.message);
+    avisarIA("Erro ao encerrar aula");
   } else {
-    console.log("Atualizado no banco:", data);
+    avisarIA("📴 Aula encerrada com sucesso!");
   }
 };
-
+ // EXPORTAR PLANILHA
   const exportarPlanilha = () => {
     if (alunos.length === 0) return alert("Sem dados para exportar");
     const ws = XLSX.utils.json_to_sheet(alunos.map(a => ({
@@ -84,7 +140,7 @@ const encerrarAula = async () => {
     XLSX.utils.book_append_sheet(wb, ws, "Alunos");
     XLSX.writeFile(wb, "Relatorio_CondutorPro.xlsx");
   };
-
+// FILTRAGEM DE ALUNOS
   const isOnline = (ultimaAtiv: string) => {
     if (!ultimaAtiv) return false;
     const minutos = (new Date().getTime() - new Date(ultimaAtiv).getTime()) / 60000;
@@ -170,6 +226,7 @@ const encerrarAula = async () => {
               </tr>
             </thead>
             <tbody>
+            {/* Lista de alunos */}
               {alunosFiltrados.map((aluno) => (
                 <tr key={aluno.id} style={{ borderBottom: "1px solid rgba(255,255,255,0.02)" }}>
                   <td style={tdStyle}>
@@ -195,19 +252,48 @@ const encerrarAula = async () => {
                     </div>
                   </td>
                   <td style={tdStyle}>
-                    <div style={{ display: "flex", gap: "15px" }}>
-                      <button onClick={async () => {
-                        const novoStatus = aluno.status === 'ativo' ? 'pendente' : 'ativo';
-                        await supabase.from('alunos').update({ status: novoStatus }).eq('id', aluno.id);
-                      }} style={actionButtonStyle}>
-                        {aluno.status === 'ativo' ? <XCircle color="#E05C5C" size={20} /> : <ShieldCheck color="#5CBF8A" size={20} />}
-                      </button>
-                      <button onClick={async () => {
-                        if(confirm("Excluir aluno?")) await supabase.from('alunos').delete().eq('id', aluno.id);
-                      }} style={actionButtonStyle}>
-                        <Trash2 color="#555" size={18} />
-                      </button>
-                    </div>
+                    <div style={{ display: "flex", gap: "10px" }}>
+
+  {/* LIBERAR COMO ALUNO */}
+  <button
+    onClick={() => liberar(aluno.id, 'aluno')}
+    style={actionButtonStyle}
+    title="Liberar como aluno"
+  >
+    👤
+  </button>
+
+  {/* LIBERAR COMO ADMIN */}
+  <button
+    onClick={() => liberar(aluno.id, 'admin')}
+    style={actionButtonStyle}
+    title="Liberar como administrador"
+  >
+    👑
+  </button>
+
+  {/* BLOQUEAR */}
+  <button
+    onClick={() => liberar(aluno.id, 'pendente')}
+    style={actionButtonStyle}
+    title="Bloquear acesso"
+  >
+    <XCircle color="#E05C5C" size={20} />
+  </button>
+
+  {/* EXCLUIR */}
+  <button
+    onClick={async () => {
+      if (confirm("Excluir aluno?")) {
+        await supabase.from('alunos').delete().eq('id', aluno.id);
+      }
+    }}
+    style={actionButtonStyle}
+  >
+    <Trash2 color="#555" size={18} />
+  </button>
+
+</div>
                   </td>
                 </tr>
               ))}
@@ -233,6 +319,7 @@ const inputBuscaStyle = {
   width: "100%", padding: "12px 12px 12px 40px", background: "rgba(255,255,255,0.05)",
   border: "1px solid rgba(255,255,255,0.1)", borderRadius: "8px", color: "#fff", outline: "none"
 };
+{/* BOTAÕES */}
 const secondaryButtonStyle = { 
   display: "flex", alignItems: "center", gap: "8px", padding: "10px 18px", 
   borderRadius: "8px", fontSize: "13px", fontWeight: "bold" as const, 

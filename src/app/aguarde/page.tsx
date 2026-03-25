@@ -1,8 +1,11 @@
 "use client";
 
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Clock, ShieldCheck, MessageCircle, LogOut } from "lucide-react";
+import { supabase } from "@/lib/supabase"; // 🔥 FALTAVA ISSO
 
 export default function AguardePage() {
   const router = useRouter();
@@ -12,6 +15,40 @@ export default function AguardePage() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+  const userId = localStorage.getItem("user-id");
+
+  if (!userId) return;
+
+  const channel = supabase
+    .channel('aguarde-status')
+    .on(
+      'postgres_changes',
+      {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'alunos',
+        filter: `id=eq.${userId}`
+      },
+      (payload) => {
+        const novo = payload.new as any;
+
+        if (novo.status === 'ativo') {
+          window.dispatchEvent(new CustomEvent("ia-notificacao", {
+            detail: "🚀 Acesso liberado! Entrando..."
+          }));
+
+          router.push("/dashboard");
+        }
+      }
+    )
+    .subscribe();
+
+  return () => {
+    supabase.removeChannel(channel);
+  };
+}, []);
 
   const handleSair = () => {
     localStorage.clear();

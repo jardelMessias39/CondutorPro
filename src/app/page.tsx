@@ -61,62 +61,91 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
 
-    if (isLogin) {
-      const { data, error } = await supabase
-        .from('alunos')
-        .select('*')
-        .eq('email', email)
-        .eq('senha', senha)
-        .single();
+   if (isLogin) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password: senha
+  });
 
-      if (error || !data) {
-        avisarIA("E-mail ou senha incorretos.");
-        setLoading(false);
-        return;
-      }
-      // CRIA UM CÓDIGO ÚNICO PARA ESTA SESSÃO (USANDO O TEMPO ATUAL)
-      const novaSessao = Math.random().toString(36).substring(7) + Date.now();
-
-      // ATUALIZA O BANCO COM A NOVA SESSÃO
-      await supabase
-        .from('alunos')
-        .update({ id_sessao: novaSessao })
-        .eq('id', data.id);
-
-      // SALVA NO NAVEGADOR DO ALUNO
-      localStorage.setItem("user-name", data.nome);
-      localStorage.setItem("user-id", data.id);
-      localStorage.setItem("id-sessao", novaSessao); // Importante!
-
-      if (data.role === 'admin') router.push("/admin");
-      else if (data.status === 'ativo') router.push("/dashboard");
-      else router.push("/aguarde");
-    } else {
-      // Cadastro com travas
-      if (cpf.replace(/\D/g, "").length !== 11) {
-        avisarIA("CPF incompleto! Digite os 11 números.");
-        setLoading(false);
-        return;
-      }
-      if (!validarIdade(dataNascimento)) {
-        avisarIA("⚠️ Cadastro negado: Apenas para maiores de 18 anos.");
-        setLoading(false);
-        return;
-      }
-
-      const { error } = await supabase.from('alunos').insert([{
-        nome, email, cpf, senha, data_nascimento: dataNascimento,
-        status: 'pendente', role: 'aluno', xp: 0, nivel: 'Recruta'
-      }]);
-
-      if (error) avisarIA("Erro: " + error.message);
-      else {
-        avisarIA("Matrícula realizada! Agora faça seu login.");
-        setIsLogin(true);
-      }
-    }
+  if (error || !data.user) {
+    avisarIA("E-mail ou senha incorretos.");
     setLoading(false);
-  };
+    
+    return;
+  }
+
+  const user = data.user;
+
+  // 🔥 busca dados extras do aluno
+  const { data: aluno, error: erroAluno } = await supabase
+    .from("alunos")
+    .select("*")
+    .eq("id", user.id)
+    .single();
+
+   if (erroAluno || !aluno) {
+    avisarIA("Erro ao carregar dados do usuário.");
+    setLoading(false);
+    return;
+  }
+ // 🔥 NÃO precisa mais salvar sessão fake
+localStorage.setItem("user-id", user.id);
+localStorage.setItem("user-name", aluno.nome);
+localStorage.setItem("user-role", aluno.role);
+
+  if (aluno.role === "admin") router.push("/admin");
+  else if (aluno.status === "ativo") router.push("/dashboard");
+  else router.push("/aguarde");
+}else {
+  if (cpf.replace(/\D/g, "").length !== 11) {
+    avisarIA("CPF inválido.");
+    setLoading(false);
+    return;
+  }
+
+  if (!validarIdade(dataNascimento)) {
+    avisarIA("Apenas maiores de 18 anos.");
+    setLoading(false);
+    return;
+  }
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password: senha
+  });
+
+  if (error || !data.user) {
+    avisarIA("Erro: " + error?.message);
+    setLoading(false);
+    return;
+  }
+
+  const user = data.user;
+
+  // 🔥 salva na tabela alunos
+  const { error: erroAluno } = await supabase.from("alunos").insert([
+    {
+      id: user.id,
+      nome,
+      email,
+      cpf,
+      data_nascimento: dataNascimento,
+      status: "pendente",
+      role: "aluno",
+      xp: 0,
+      nivel: "Recruta"
+    }
+  ]);
+
+  if (erroAluno) {
+    avisarIA("Erro ao salvar dados.");
+  } else {
+    avisarIA("Cadastro feito! Verifique seu e-mail.");
+    setIsLogin(true);
+  }
+}
+setLoading(false);
+};
 
   return (
     <div style={{ minHeight: "100vh", background: "#0D0E11", color: "#F0E8D8", fontFamily: "serif" }}>

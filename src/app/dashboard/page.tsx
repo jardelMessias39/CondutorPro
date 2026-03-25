@@ -23,7 +23,7 @@ export default function DashboardPrincipal() {
   const [mostrarModal, setMostrarModal] = useState(false);
   const [alunoId, setAlunoId] = useState("");
   const [avisoAula, setAvisoAula] = useState(false);
-
+  const [avisarQueEstouOnline, setAvisarQueEstouOnline] = useState(false);
 
 
   // 1. VERIFICAR SE O USUARIO ESTÁ LOGADO
@@ -64,12 +64,20 @@ export default function DashboardPrincipal() {
       await supabase.from("alunos").update({ ultima_atividade: new Date().toISOString() }).eq("id", id);
     };
     avisarQueEstouOnline();
-    const interval = setInterval(avisarQueEstouOnline, 60000); // 1 minuto
+    const interval = setInterval(avisarQueEstouOnline, 20000); // 20 segundos
     return () => clearInterval(interval);
   }, []);
 
+// 2. EVENTO DE FOCUS PARA ATUALIZAR ONLINE
+  useEffect(() => {
+  const handleFocus = () => avisarQueEstouOnline();
+  window.addEventListener("focus", handleFocus);
+
+  return () => window.removeEventListener("focus", handleFocus);
+}, []);
+
   // 2. VERIFICAÇÃO DE ACESSO E CARREGAMENTO
- useEffect(() => {
+  useEffect(() => {
   const canal = supabase
     .channel('mudanca-aula')
     .on(
@@ -79,96 +87,99 @@ export default function DashboardPrincipal() {
         const dadosNovos = payload.new as any;
 
         if (dadosNovos.chave === 'aula_ao_vivo') {
-          if (dadosNovos.valor === true) {
-            setAulaAtiva(true);
-            setLinkAula(dadosNovos.link);
-          } else {
-            setAulaAtiva(false);
-            setLinkAula("");
+          const ativo = String(dadosNovos.valor) === 'true';
+
+          setAulaAtiva(ativo);
+          setLinkAula(ativo ? dadosNovos.link : "");
+
+          if (!ativo) {
+            setMostrarModal(false);
           }
         }
       }
     )
-    .subscribe((status) => {
-      console.log("STATUS DO REALTIME:", status);
-    });
+    .subscribe();
 
   return () => {
     supabase.removeChannel(canal);
   };
 }, []);
-    useEffect(() => {
-  const carregarDadosIniciais = async () => {
-    const userId = localStorage.getItem("user-id");
-    const savedName = localStorage.getItem("user-name");
+  // 3. CARREGAMENTO INICIAL
+  useEffect(() => {
+    const carregarDadosIniciais = async () => {
+      const userId = localStorage.getItem("user-id");
+      const savedName = localStorage.getItem("user-name");
 
-    if (!userId) {
-      router.push("/");
-      return;
-    }
-
-    if (savedName) setUserName(savedName.split(" ")[0]);
-
-    try {
-      const { data: aluno } = await supabase
-        .from('alunos')
-        .select('status, role')
-        .eq('id', userId)
-        .single();
-
-      if (aluno?.role === 'admin') setIsAdmin(true);
-
-      if (aluno?.status !== 'ativo') {
-        router.push("/aguarde");
+      if (!userId) {
+        router.push("/");
         return;
       }
 
-      const { data: aula } = await supabase
-        .from('configuracoes')
-        .select('*')
-        .eq('chave', 'aula_ao_vivo')
-        .maybeSingle();
+      if (savedName) setUserName(savedName.split(" ")[0]);
 
-      if (aula && String(aula.valor) === 'true') {
-        setAulaAtiva(true);
-        setLinkAula(aula.link);
-      } else {
-        setAulaAtiva(false);
+      try {
+        const { data: aluno } = await supabase
+          .from('alunos')
+          .select('status, role')
+          .eq('id', userId)
+          .single();
+
+        if (aluno?.role === 'admin') setIsAdmin(true);
+
+        if (aluno?.status !== 'ativo') {
+          router.push("/aguarde");
+          return;
+        }
+
+        const { data: aula } = await supabase
+          .from('configuracoes')
+          .select('*')
+          .eq('chave', 'aula_ao_vivo')
+          .maybeSingle();
+
+        if (aula && String(aula.valor) === 'true') {
+          setAulaAtiva(true);
+          setLinkAula(aula.link);
+        } else {
+          setAulaAtiva(false);
+        }
+
+        setLoading(false);
+      } catch (err) {
+        console.error("Erro:", err);
+        setLoading(false);
       }
+    };
 
-      setLoading(false);
-    } catch (err) {
-      console.error("Erro:", err);
-      setLoading(false);
-    }
-  };
-
-  carregarDadosIniciais();
-}, [router]);
-
+    carregarDadosIniciais();
+  }, [router]);
 
 useEffect(() => {
-  const interval = setInterval(async () => {
-    const { data } = await supabase
-      .from('configuracoes')
-      .select('*')
-      .eq('chave', 'aula_ao_vivo')
-      .single();
+  const canal = supabase
+    .channel('mudanca-aula')
+    .on(
+      'postgres_changes',
+      { event: 'UPDATE', schema: 'public', table: 'configuracoes' },
+      (payload) => {
+        const dadosNovos = payload.new as any;
 
-    if (data) {
-      const ativo = String(data.valor) === 'true';
+        if (dadosNovos.chave === 'aula_ao_vivo') {
+          const ativo = String(dadosNovos.valor) === 'true';
 
-      setAulaAtiva(ativo);
-      setLinkAula(ativo ? data.link : "");
+          setAulaAtiva(ativo);
+          setLinkAula(ativo ? dadosNovos.link : "");
 
-      // 🔥 NOVO: se aula acabou → fecha modal e volta pro dashboard
-      if (!ativo) {
-        setMostrarModal(false);
+          if (!ativo) {
+            setMostrarModal(false);
+          }
+        }
       }
-    }
-  }, 3000);
+    )
+    .subscribe();
 
-  return () => clearInterval(interval);
+  return () => {
+    supabase.removeChannel(canal);
+  };
 }, []);
 
   // 3. CÁLCULOS DE PROGRESSO (Baseado nos novos IDs)
@@ -189,21 +200,21 @@ useEffect(() => {
   return (
     <div style={{ minHeight: "100vh", background: "var(--background)", color: "var(--foreground)", transition: "0.3s" }}>
       {avisoAula && (
-  <div style={{
-    position: 'fixed',
-    top: '20px',
-    right: '20px',
-    backgroundColor: '#2D8CFF',
-    color: 'white',
-    padding: '15px 25px',
-    borderRadius: '10px',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-    zIndex: 9999,
-    animation: 'slideIn 0.10s forwards'
-  }}>
-    🚀 O professor acabou de iniciar a aula!
-  </div>
-)}
+        <div style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          backgroundColor: '#2D8CFF',
+          color: 'white',
+          padding: '15px 25px',
+          borderRadius: '10px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+          zIndex: 9999,
+          animation: 'slideIn 0.10s forwards'
+        }}>
+          🚀 O professor acabou de iniciar a aula!
+        </div>
+      )}
       <CourseHeader activePage="Dashboard" />
       <RankingWidget />
 
