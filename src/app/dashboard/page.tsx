@@ -123,6 +123,9 @@ export default function DashboardPrincipal() {
         return;
       }
 
+      // Popula o alunoId para o ValidadorAula usar na presença biométrica
+      setAlunoId(userId);
+
       if (savedName) setUserName(savedName.split(" ")[0]);
 
       try {
@@ -162,33 +165,7 @@ export default function DashboardPrincipal() {
     carregarDadosIniciais();
   }, [router]);
 
-useEffect(() => {
-  const canal = supabase
-    .channel('mudanca-aula')
-    .on(
-      'postgres_changes',
-      { event: 'UPDATE', schema: 'public', table: 'configuracoes' },
-      (payload) => {
-        const dadosNovos = payload.new as any;
-
-        if (dadosNovos.chave === 'aula_ao_vivo') {
-          const ativo = String(dadosNovos.valor) === 'true';
-
-          setAulaAtiva(ativo);
-          setLinkAula(ativo ? dadosNovos.link : "");
-
-          if (!ativo) {
-            setMostrarModal(false);
-          }
-        }
-      }
-    )
-    .subscribe();
-
-  return () => {
-    supabase.removeChannel(canal);
-  };
-}, []);
+// Canal único para mudanças de aula ao vivo — definido acima (linhas 88-114)
 
   // 3. CÁLCULOS DE PROGRESSO (Baseado nos novos IDs)
   const contarConcluidos = (cat: string) =>

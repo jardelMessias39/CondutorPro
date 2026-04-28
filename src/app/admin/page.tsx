@@ -21,8 +21,19 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [aulaAtiva, setAulaAtiva] = useState(false);
+  const [linkInput, setLinkInput] = useState("");
 
  useEffect(() => {
+  // Carrega o link salvo no Supabase para preencher o campo
+  const carregarLink = async () => {
+    const { data } = await supabase
+      .from("configuracoes")
+      .select("link")
+      .eq("chave", "aula_ao_vivo")
+      .maybeSingle();
+    if (data?.link) setLinkInput(data.link);
+  };
+  carregarLink();
   fetchAlunos();
 
   const channel = supabase
@@ -99,19 +110,21 @@ export default function AdminPage() {
   };
 // ABRIR A AULA
   const abrirAulaOnline = async () => {
- const linkAula = "https://meet.google.com/thb-yybc-wnv";
-
-  if (!linkAula) return;
+  if (!linkInput.trim()) {
+    avisarIA("Cole o link da reunião antes de iniciar a aula.");
+    return;
+  }
 
   await supabase
     .from('configuracoes')
     .update({
       valor: true,
-      link: linkAula
+      link: linkInput.trim()
     })
     .eq('chave', 'aula_ao_vivo');
 
-  window.open(linkAula, "_blank"); // admin entra primeiro
+  avisarIA("🟢 Aula iniciada! Alunos já receberam o aviso.");
+  window.open(linkInput.trim(), "_blank"); // admin entra primeiro
 };
 // ENCERRAR A AULA
 const encerrarAula = async () => {
@@ -170,21 +183,40 @@ const encerrarAula = async () => {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+
+          {/* CAMPO DE LINK DINÂMICO */}
+          <input
+            type="url"
+            placeholder="Cole o link do Meet, Zoom..."
+            value={linkInput}
+            onChange={(e) => setLinkInput(e.target.value)}
+            style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              borderRadius: "8px",
+              color: "#fff",
+              padding: "10px 14px",
+              fontSize: "13px",
+              outline: "none",
+              width: "260px",
+            }}
+          />
+
   {/* Botão de Iniciar */}
   <button 
     onClick={abrirAulaOnline} 
-    style={{ background: '#2D8CFF', color: '#fff', padding: '10px' }}
+    style={{ background: '#2D8CFF', color: '#fff', padding: '10px 16px', borderRadius: '8px', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}
   >
-    INICIAR AULA ONLINE
+    INICIAR AULA
   </button>
 
-  {/* NOVO: Botão de Encerrar (isso vai ativar a função que está 'apagada') */}
+  {/* Botão de Encerrar */}
   <button 
     onClick={encerrarAula} 
-    style={{ background: '#FF4D4D', color: '#fff', padding: '10px' }}
+    style={{ background: '#FF4D4D', color: '#fff', padding: '10px 16px', borderRadius: '8px', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}
   >
-    ENCERRAR AULA
+    ENCERRAR
   </button>
 
           

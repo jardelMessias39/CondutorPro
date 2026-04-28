@@ -58,21 +58,17 @@ const mapaDeAulas: Record<string, string> = {
  const buscarExplicacaoIA = async (pergunta: string, escolhida: string, correta: string, categoriaQuestao: string) => {
   setCarregandoIA(true);
 
-  // Descobre qual aula recomendar baseada no mapeamento
   const aulaRecomendada = mapaDeAulas[categoriaQuestao] || "Legislação";
   try {
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    // Chama o proxy server-side para não expor a chave GROQ no browser
+    const response = await fetch("/api/groq", {
       method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_GROQ_API_KEY}`, // ⚠️ Mova para .env depois!
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         model: "llama-3.3-70b-versatile",
-        // NOVO PROMPT MAIS INTELIGENTE
-    messages: [
-      {
-       role: "system",
+        messages: [
+          {
+            role: "system",
             content: `Você é um instrutor de autoescola sênior. 
             Use a técnica de Cadeia de Pensamento: 
             1. Analise por que a resposta '${escolhida}' está incorreta.
@@ -84,8 +80,7 @@ const mapaDeAulas: Record<string, string> = {
             role: "user",
             content: `Questão: ${pergunta}`
           }
-     
-    ],
+        ],
       })
     });
 
@@ -97,6 +92,7 @@ const mapaDeAulas: Record<string, string> = {
     setCarregandoIA(false);
   }
 };
+
 
 const verificarResposta = (indexEscolhido: number) => {
   const questaoAtual = questoes[perguntaAtual];

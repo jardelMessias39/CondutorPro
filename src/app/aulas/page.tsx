@@ -39,13 +39,29 @@ export default function AulasPage() {
   // Nomes que aparecem nos botões
   const categories = ["Todos", "Acidentes", "Legislação", "Prática"];
 
-  // 1. CARREGAR PROGRESSO
+  // 1. CARREGAR PROGRESSO — Supabase como fonte de verdade, localStorage como cache rápido
   useEffect(() => {
-    const salvo = localStorage.getItem("progresso-aulas");
-    if (salvo) {
-      const listaIds = JSON.parse(salvo);
-      setConcluidos(listaIds);
-    }
+    const carregarProgresso = async () => {
+      // Cache imediato do localStorage para não piscar a tela
+      const salvo = localStorage.getItem("progresso-aulas");
+      if (salvo) setConcluidos(JSON.parse(salvo));
+
+      // Sincroniza com o Supabase (funciona em qualquer dispositivo)
+      const userId = localStorage.getItem("user-id");
+      if (!userId) return;
+
+      const { data: aluno } = await supabase
+        .from("alunos")
+        .select("aulas_concluidas")
+        .eq("id", userId)
+        .single();
+
+      if (aluno?.aulas_concluidas && Array.isArray(aluno.aulas_concluidas)) {
+        setConcluidos(aluno.aulas_concluidas);
+        localStorage.setItem("progresso-aulas", JSON.stringify(aluno.aulas_concluidas));
+      }
+    };
+    carregarProgresso();
   }, []);
 
   // 2. A LOGICA DE FILTRAGEM (Mais robusta)
@@ -111,13 +127,31 @@ export default function AulasPage() {
       return;
     }
 
-    // Inicia o cronômetro (só conta se o aluno estiver na página)
-    timerRef.current = setInterval(() => {
-      setSegundosPassados((prev) => prev + 1);
-    }, 1000);
+    const iniciarTimer = () => {
+      timerRef.current = setInterval(() => {
+        setSegundosPassados((prev) => prev + 1);
+      }, 1000);
+    };
+
+    // Pausa o timer quando o aluno muda de aba (Page Visibility API)
+    // Evita ganhar XP sem realmente assistir ao vídeo
+    const handleVisibilidade = () => {
+      if (document.hidden) {
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+          timerRef.current = null;
+        }
+      } else {
+        if (!timerRef.current) iniciarTimer();
+      }
+    };
+
+    iniciarTimer();
+    document.addEventListener("visibilitychange", handleVisibilidade);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
+      document.removeEventListener("visibilitychange", handleVisibilidade);
     };
   }, [activeVideo.id, concluidos]);
 
