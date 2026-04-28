@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LogOut, Car, Moon, Sun } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 interface CourseHeaderProps {
   activePage: "Dashboard" | "Aulas" | "Simulados" | "Progresso" | "Quizzes" | "Biblioteca";
@@ -24,6 +25,33 @@ export default function CourseHeader({ activePage }: CourseHeaderProps) {
       setTema(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
     }
+  }, []);
+
+  // 2. HEARTBEAT GLOBAL — atualiza o status online em QUALQUER página do sistema
+  useEffect(() => {
+    const executarHeartbeat = async () => {
+      const id = localStorage.getItem("user-id");
+      if (!id) return;
+      await supabase
+        .from("alunos")
+        .update({ ultima_atividade: new Date().toISOString() })
+        .eq("id", id);
+    };
+
+    // Dispara imediatamente ao entrar em qualquer página
+    executarHeartbeat();
+
+    // Repete a cada 20 segundos
+    const interval = setInterval(executarHeartbeat, 20000);
+
+    // Atualiza quando o aluno volta para a aba
+    const handleFocus = () => executarHeartbeat();
+    window.addEventListener("focus", handleFocus);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("focus", handleFocus);
+    };
   }, []);
 
   // 2. FUNÇÃO PARA TROCAR O TEMA E SALVAR
