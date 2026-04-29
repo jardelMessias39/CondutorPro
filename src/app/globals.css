@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@keyframes skeleton-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* TEMA ESCURO (Preto e Dourado) - O padrão que você já gosta */
 [data-theme='dark'], :root:not([data-theme='light']) {
   --background: #0D0E11;
@@ -121,4 +126,16 @@ header a, nav a, header span, nav span {
     justify-content: center !important;
     gap: 8px !important;
   }
+}
+
+/* ANIMAÇÕES PREMIUM */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 4px 15px rgba(45, 140, 255, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 6px 25px rgba(45, 140, 255, 0.6); }
+  100% { transform: scale(1); box-shadow: 0 4px 15px rgba(45, 140, 255, 0.4); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }

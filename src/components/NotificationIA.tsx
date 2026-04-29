@@ -7,14 +7,14 @@ export default function NotificationIA() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const mostrarMensagem = (e: any) => {
+    const mostrarMensagem = (e: CustomEvent) => {
       setMsg(e.detail);
       setVisible(true);
-      setTimeout(() => setVisible(false), 5000); // Some após 5 segundos
+      setTimeout(() => setVisible(false), 5000);
     };
 
-    window.addEventListener("ia-notificacao", mostrarMensagem);
-    return () => window.removeEventListener("ia-notificacao", mostrarMensagem);
+    window.addEventListener("ia-notificacao", mostrarMensagem as EventListener);
+    return () => window.removeEventListener("ia-notificacao", mostrarMensagem as EventListener);
   }, []);
 
   if (!visible) return null;

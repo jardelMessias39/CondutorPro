@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import VIDEOS_DATA from '@/data/videos_curadoria.json';
+import type { Video } from '@/types';
 import ProgressDash from '@/components/ProgressDash';
 import CourseHeader from '@/components/CourseHeader';
 import RankingWidget from "@/components/Ranking/RankingWidget";
@@ -10,12 +11,18 @@ import { supabase } from "@/lib/supabase";
 // Mapeamento: O que aparece no botão -> O que está escrito no JSON
 const CATEGORY_MAP: Record<string, string> = {
   "Todos": "Todos",
-  "Acidentes": "primeiros_socorros",    // Se no JSON estiver "socorros"
-  "Legislação": "legislacao", // Se no JSON estiver "legislacao"
-  "Prática": "direcao"       // Se no JSON estiver "direcao" ou "pratica"
+  "Acidentes": "primeiros_socorros",
+  "Legislação": "legislacao",
+  "Prática": "direcao"
 };
 
-const CATEGORY_CONFIG: Record<string, any> = {
+interface CategoryConfig {
+  icon: string;
+  color: string;
+  bg: string;
+}
+
+const CATEGORY_CONFIG: Record<string, CategoryConfig> = {
   "Todos": { icon: "⊞", color: "#C8A96E", bg: "rgba(200,169,110,0.15)" },
   "socorros": { icon: "⚠", color: "#E05C5C", bg: "rgba(224,92,92,0.15)" },
   "legislacao": { icon: "§", color: "#5C8FE0", bg: "rgba(92,143,224,0.15)" },
@@ -159,7 +166,7 @@ export default function AulasPage() {
   useEffect(() => {
 
     // Vou usar 8 minutos (480s) como padrão caso não exista no seu JSON.
-    const duracaoVideo = (activeVideo as any).duracaoSegundos || 480;
+    const duracaoVideo = activeVideo.duracaoSegundos || 480;
     const metaSegundos = duracaoVideo * 0.7;
 
     if (segundosPassados >= metaSegundos && !podeConcluir) {

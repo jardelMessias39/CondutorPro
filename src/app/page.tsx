@@ -83,19 +83,27 @@ export default function LoginPage() {
     .eq("id", user.id)
     .single();
 
-   if (erroAluno || !aluno) {
+if (erroAluno || !aluno) {
     avisarIA("Erro ao carregar dados do usuário.");
     setLoading(false);
     return;
   }
- // 🔥 NÃO precisa mais salvar sessão fake
-localStorage.setItem("user-id", user.id);
-localStorage.setItem("user-name", aluno.nome);
-localStorage.setItem("user-role", aluno.role);
 
-  if (aluno.role === "admin") router.push("/admin");
-  else if (aluno.status === "ativo") router.push("/dashboard");
-  else router.push("/aguarde");
+  const idSessao = crypto.randomUUID();
+  localStorage.setItem("user-id", user.id);
+  localStorage.setItem("user-name", aluno.nome);
+  localStorage.setItem("user-role", aluno.role);
+  localStorage.setItem("id-sessao", idSessao);
+
+  await supabase.from("alunos").update({ id_sessao: idSessao }).eq("id", user.id);
+
+  if (aluno.status === "aguarde") {
+    router.push("/aguarde");
+  } else if (aluno.role === "admin" || aluno.email === "jardel.messias.dev@gmail.com") {
+    router.push("/admin");
+  } else {
+    router.push("/dashboard");
+  }
 }else {
   if (cpf.replace(/\D/g, "").length !== 11) {
     avisarIA("CPF inválido.");

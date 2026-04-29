@@ -2,18 +2,19 @@
 import React, { useState, useEffect } from "react";
 import CourseHeader from "@/components/CourseHeader";
 import dadosQuestoes from "@/data/questoes.json";
-import { Trophy, RefreshCw, Home } from "lucide-react"; // Ícones para o final
+import type { Questao } from "@/types";
+import { Trophy, RefreshCw, Home } from "lucide-react";
 import RankingWidget from "@/components/Ranking/RankingWidget";
 export default function QuizPage() {
   const [perguntaAtual, setPerguntaAtual] = useState(0);
   const [selecionada, setSelecionada] = useState<string | null>(null);
   const [confirmado, setConfirmado] = useState(false);
-  const [questoesQuiz, setQuestoesQuiz] = useState<any[]>([]);
+  const [questoesQuiz, setQuestoesQuiz] = useState<Questao[]>([]);
   const [pontuacao, setPontuacao] = useState(0);
   const [finalizado, setFinalizado] = useState(false);
 
   useEffect(() => {
-    const listaBase = Array.isArray(dadosQuestoes) ? dadosQuestoes : (dadosQuestoes as any).todasQuestoes;
+    const listaBase = dadosQuestoes as Questao[];
     if (listaBase && listaBase.length > 0) {
       const embaralhadas = [...listaBase].sort(() => Math.random() - 0.5).slice(0, 10);
       setQuestoesQuiz(embaralhadas);

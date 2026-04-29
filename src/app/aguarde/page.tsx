@@ -32,7 +32,7 @@ export default function AguardePage() {
         filter: `id=eq.${userId}`
       },
       (payload) => {
-        const novo = payload.new as any;
+        const novo = payload.new as { status: string };
 
         if (novo.status === 'ativo') {
           window.dispatchEvent(new CustomEvent("ia-notificacao", {

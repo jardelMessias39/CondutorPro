@@ -6,7 +6,13 @@ import Webcam from "react-webcam";
 import { Camera, CheckCircle, Video } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
-export default function ValidadorPresenca({ linkAula, alunoId, onClose }: { linkAula: string, alunoId: string, onClose: any }) {
+interface ValidadorProps {
+  linkAula: string;
+  alunoId: string;
+  onClose: () => void;
+}
+
+export default function ValidadorPresenca({ linkAula, alunoId, onClose }: ValidadorProps) {
   const webcamRef = useRef<Webcam>(null);
   const [imgSrc, setImgSrc] = useState<string | null>(null);
   const [enviando, setEnviando] = useState(false);

@@ -2,12 +2,18 @@
 "use client";
 
 import { useEffect, useState, useCallback } from 'react';
-import { supabase } from "@/lib/supabase"; // Importando sua instância do Supabase
+import { supabase } from "@/lib/supabase";
+import type { Aluno } from "@/types";
 import { nomeDoNivel } from "@/lib/niveis";
+
+interface RankingEntry extends Pick<Aluno, 'nome' | 'email' | 'xp' | 'nivel'> {
+  isMe: boolean;
+}
+
 export default function RankingWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [listaAlunos, setListaAlunos] = useState<any[]>([]);
+  const [listaAlunos, setListaAlunos] = useState<RankingEntry[]>([]);
   const [loading, setLoading] = useState(false);
 
   // 1. Criamos a função usando useCallback para ela ser estável

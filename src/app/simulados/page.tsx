@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import dadosQuestoes from '@/data/questoes.json';
+import type { Questao } from '@/types';
 import CourseHeader from '@/components/CourseHeader';
 import RankingWidget from "@/components/Ranking/RankingWidget";
 import { supabase } from "@/lib/supabase";
-;
 
 export default function SimuladoPage() {
-  const [questoes, setQuestoes] = useState<any[]>([]);
+  const [questoes, setQuestoes] = useState<Questao[]>([]);
   const [perguntaAtual, setPerguntaAtual] = useState(0);
   const [pontuacao, setPontuacao] = useState(0);
   const [simuladoFinalizado, setSimuladoFinalizado] = useState(false);
-  const [tempoRestante, setTempoRestante] = useState(30 * 60); // 30 minutos
+  const [tempoRestante, setTempoRestante] = useState(30 * 60);
   const [simuladoIniciado, setSimuladoIniciado] = useState(false);
   const [explicacaoIA, setExplicacaoIA] = useState<string | null>(null);
   const [carregandoIA, setCarregandoIA] = useState(false);
@@ -59,11 +59,18 @@ const mapaDeAulas: Record<string, string> = {
   setCarregandoIA(true);
 
   const aulaRecomendada = mapaDeAulas[categoriaQuestao] || "Legislação";
+  const userId = localStorage.getItem("user-id");
+  const sessaoId = localStorage.getItem("id-sessao");
+  
   try {
     // Chama o proxy server-side para não expor a chave GROQ no browser
     const response = await fetch("/api/groq", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "x-user-id": userId || "",
+        "x-sessao-id": sessaoId || ""
+      },
       body: JSON.stringify({
         model: "llama-3.3-70b-versatile",
         messages: [
@@ -84,9 +91,14 @@ const mapaDeAulas: Record<string, string> = {
       })
     });
 
+    if (!response.ok) {
+      throw new Error("Erro na API");
+    }
+    
     const data = await response.json();
     setExplicacaoIA(data.choices[0].message.content);
   } catch (error) {
+    console.error("Erro ao buscar explicação:", error);
     setExplicacaoIA(`A resposta correta é '${correta}'. Recomendo revisar o módulo de ${aulaRecomendada}.`);
   } finally {
     setCarregandoIA(false);
